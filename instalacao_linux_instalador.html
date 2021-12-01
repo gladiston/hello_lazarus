@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalação no Windows: Instalador</title>
+    <title>Instalação no Linux: Instalação a partir dos repositórios</title>
 </head>
 <body>
-    <h3>Instalação no Windows: Instalador</h3>
+    <h3>Instalação no Linux: Instalação a partir dos repositórios</h3>
     <hr>
+    <p>A instalação a partir dos repositórios é recomendada apenas ao FreePascal(FPC), porque o Lazarus 
+        precisa de uma instalação será homeuser, caso contrário você teria de dar permissões a 
+        arquivos que o instalador do pacotes agregar e isso complica muito desnecessariamente.</p>
+    <p>Nesta instalação, instalaremos o usaremos 
+        o fpcupdeluge para instalar o FPC dos repositórios, porém o Lazarus no HOME do usuário. Primeiro vamos instalar alguns 
+        pacotes essenciais:</p>
+     <pre>
+     sudo dnf install make automake gcc gcc-c++ kernel-devel
+     sudo dnf groupinstall "Development Tools" "Development Libraries"
+     sudo dnf install gdb zip unzip gdb subversion binutils libX11-devel gtk2-devel gdk-pixbuf2-xlib
+     sudo dnf install cairo cairo-devel cairomm-devel 
+     sudo dnf install pango pango-devel pangomm pangomm-devel
+     </pre>
+     <p>Se planeja compilar o FPC separadamente, então inclua:</p>
+     <pre>
+     sudo dnf install fpc fpc-src qt5pas-devel
+     </pre>
+     <p>Com o FPC instalado no seu sistema você está apto a instalar o Lazarus via GIT ou fpcupdeluge. 
+         Para não ser muito repetitivo, escolha como desejará fazer a instalação do Lazarus:</p>
+     <ol>
+        <li><a href="instalacao_linux_fpcupdeluge.html">Instalação no Linux: Usando fpcupdeluge</a></li>
+        <li><a href="instalacao_linux_git.html">Instalação no Linux: Usando GIT</a></li>       
+     </ol>         
 </body>
 </html>
