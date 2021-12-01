@@ -4,10 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xxxxxx</title>
+    <title>Considerações especiais no ambiente Linux: Formato de data</title>
 </head>
 <body>
-    <h3>xxxxxx</h3>
+    <h3>Considerações especiais no ambiente Linux: Formato de data</h3>
     <hr>
+    <p>O Lazarus assim como qualquer outra linguagem de programação retira algumas informações do
+        sistema operacional, por exemplo, ao usar:</p>
+    <pre>minhadata:=DateToStr(‘01/01/1970’);</pre>
+    <p>Isto funcionará perfeitamente no Windows, mas é possível que falhe em alguns ambientes 
+        gráficos no Linux. Isto acontece porque o Windows instalado já é localizado no ambiente em português
+        e é sempre igual em qualquer edição, porém no Linux a localização e a tradução ainda que em português,
+        o formato de data poderá ser outro.</p>
+        <p>Isso ocorre por exemplo no GNOME versão 41</p>
+        <p>Uma forma de resolver este problema é você incluir as instruções abaixo na unit que inicializada
+            seu programa, bem na seção <strong>inicialization</strong>(talvez você tenha de criá-la)</p>
+<textarea rows=50 cols=80 disabled>
+initialization
+    DefaultFormatSettings.DateSeparator:='/';
+    DefaultFormatSettings.ShortDateFormat:='DD/MM/YYYY';
+    DefaultFormatSettings.LongDateFormat:='dd" "mmmm" "yyyy';
+    DefaultFormatSettings.CurrencyString:='R$';
+    DefaultFormatSettings.DecimalSeparator:=','; 
+    // Nome dos meses abreviados
+    DefaultFormatSettings.ShortMonthNames[1] := 'Jan';
+    DefaultFormatSettings.ShortMonthNames[2] := 'Fev';
+    DefaultFormatSettings.ShortMonthNames[3] := 'Mar';
+    DefaultFormatSettings.ShortMonthNames[4] := 'Abr';
+    DefaultFormatSettings.ShortMonthNames[5] := 'Mai';
+    DefaultFormatSettings.ShortMonthNames[6] := 'Jun';
+    DefaultFormatSettings.ShortMonthNames[7] := 'Jul';
+    DefaultFormatSettings.ShortMonthNames[8] := 'Ago';
+    DefaultFormatSettings.ShortMonthNames[9] := 'Set';
+    DefaultFormatSettings.ShortMonthNames[10] := 'Out';
+    DefaultFormatSettings.ShortMonthNames[11] := 'Nov';
+    DefaultFormatSettings.ShortMonthNames[12] := 'Dez';
+    // Nome dos meses
+    DefaultFormatSettings.LongMonthNames[1] := 'Janeiro';
+    DefaultFormatSettings.LongMonthNames[2] := 'Fevereiro';
+    DefaultFormatSettings.LongMonthNames[3] := 'Março';
+    DefaultFormatSettings.LongMonthNames[4] := 'Abril';
+    DefaultFormatSettings.LongMonthNames[5] := 'Maio';
+    DefaultFormatSettings.LongMonthNames[6] := 'Junho';
+    DefaultFormatSettings.LongMonthNames[7] := 'Julho';
+    DefaultFormatSettings.LongMonthNames[8] := 'Agosto';
+    DefaultFormatSettings.LongMonthNames[9] := 'Setembro';
+    DefaultFormatSettings.LongMonthNames[10] := 'Outubro';
+    DefaultFormatSettings.LongMonthNames[11] := 'Novembro';
+    DefaultFormatSettings.LongMonthNames[12] := 'Dezembro';
+    // Nome dos dias da semana abreviados
+    DefaultFormatSettings.ShortDayNames[1] := 'Dom';
+    DefaultFormatSettings.ShortDayNames[2] := 'Seg';
+    DefaultFormatSettings.ShortDayNames[3] := 'Ter';
+    DefaultFormatSettings.ShortDayNames[4] := 'Qua';
+    DefaultFormatSettings.ShortDayNames[5] := 'Qui';
+    DefaultFormatSettings.ShortDayNames[6] := 'Sex';
+    DefaultFormatSettings.ShortDayNames[7] := 'Sab';
+    // Nome dos dias da semana
+    DefaultFormatSettings.LongDayNames[1] := 'Domingo';
+    DefaultFormatSettings.LongDayNames[2] := 'Segunda';
+    DefaultFormatSettings.LongDayNames[3] := 'Terça';
+    DefaultFormatSettings.LongDayNames[4] := 'Quarta';
+    DefaultFormatSettings.LongDayNames[5] := 'Quinta';
+    DefaultFormatSettings.LongDayNames[6] := 'Sexta';
+    DefaultFormatSettings.LongDayNames[7] := 'Sábado';
+</textarea>
+<p>Se seu programa será internacionalizado, recomendo criar um formulário onde as variaveis acima possam ser modificadas
+    conforme a localidade onde o programa será executado.</p>>
+<p>A outra forma, é conhecendo o ambiente grafico corretamente ajustá-lo para utilizar data e hora no formato brasileiro.</p>
 </body>
 </html>
