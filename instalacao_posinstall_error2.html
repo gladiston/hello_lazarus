@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeira execução: Warning: "crtbeginS.o" not found, this will probably cause a linking failure/title>
+</head>
+<body>
+    <h3>Primeira execução: Warning: "crtbeginS.o" not found, this will probably cause a linking failure</h3>
+    <hr>
+<p>Eventualmente ao compilar um projeto no Linux talvez possa aparecer a mensagem de warning:</p>
+<textarea disabled rows=2 cols=80>
+Warning: "crtbeginS.o" not found, this will probably cause a linking failure
+Warning: "crtendS.o" not found, this will probably cause a linking failure</textarea>
+<p>Elas acontecem porque o sistema não encontrou crti.o, a solução é encontrá-la no seu sistema:</p>
+<pre>locate crti.o</pre>
+<textarea disabled rows=2 cols=80>
+/usr/lib64/crti.o
+</textarea>
+<p>Uma vez que tenha encontrado, então na IDE do Lazarus vá em Project->Compiler Options-> 
+    e em Library (-Fl): inclua a pasta onde localizou tal arquivo:</p>
+<pre>/usr/lib64/</pre>
+<p>Mas se você não corrigir ou não encontrar estes arquivos, lembre-se de que trata-se
+ apenas de um tipo de Warnings que não atrapalhará a execução dos seus projetos..</p>
+    
+</body>
+</html>    

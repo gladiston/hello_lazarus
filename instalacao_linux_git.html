@@ -72,7 +72,7 @@ make bigide</pre>
        <li>Crie um atalho para ele em sua área de trabalho:
         <pre>gedit ~/.local/share/applications/lazarus.desktop</pre>
         <p>e então cole as instruções abaixo:</p>
-        <textarea disabled rows=12 cols=80>
+<textarea disabled rows=12 cols=80>
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -84,7 +84,7 @@ Icon=~/lazarus/lazarus22/images/icons/lazarus.ico
 Category=Application;IDE;Development;GUIDesigner;Programming;
 Categories=Application;IDE;Development;GUIDesigner;Programming;
 Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;            
-        </textarea>
+</textarea>
         <p>Salve o arquivo, a partir de agora, o Lazarus 2.2 aparecerá no menu de seu sistema
             se procurar pelo nome.</p>
 
@@ -103,5 +103,7 @@ git pull  </pre>
      os procedimentos anteriores que culminarão no ‘make big ide' mencionado nos passos anteriores.</p>
     <p>Geralmente, as correções do Lazarus estarão listadas com o nome de branchs como prefixo‘fixes’,
         então será fácil identificar atualizações.</p>
+    <p><b>TODO</b>: Adicionar opções para crosscompiling, da forma como esta acima, os projetos serão 
+     compilados apenas para o ambiente do host, isto é, se estiver num amd64 apenas compilará para 64bits.</p>        
 </body>
 </html>
