@@ -9,5 +9,42 @@
 <body>
     <h3>Instalação no Windows: Usando fpcupdeluge</h3>
     <hr>
+    <p>É mais simples uma instalação manual com o Lazarus+FPC, porque sua instalação será homeuser,
+       isto é, podemos sem permissão especial instalar, configurar e usar. Nesta instalação, usaremos 
+       o fpcupdeluge para instalar o FPC e Lazarus no HOME do usuário. Primeiro vamos instalar alguns 
+       pacotes essenciais:</p>
+    <textarea>
+    sudo dnf install make automake gcc gcc-c++ kernel-devel
+    sudo dnf groupinstall "Development Tools" "Development Libraries"
+    sudo dnf install gdb zip unzip gdb subversion binutils libX11-devel gtk2-devel gdk-pixbuf2-xlib
+    sudo dnf install cairo cairo-devel cairomm-devel 
+    sudo dnf install pango pango-devel pangomm pangomm-devel
+    </textarea>
+    <p>Se planeja compilar o FPC separadamente, então inclua:</p>
+    <textarea>
+    sudo dnf install fpc fpc-src qt5pas-devel
+    </textarea>
+    <p>Com o FPC instalado no seu sistema você apenas baixa ou compila o Lazarus sem essa dependência,
+        o download e compilação no caso fpcdeluge será menor, e convenhamos, o FPC será algo que
+        você não precisa modificar e deixá-lo instalado no sistema permitirá que a própria distro 
+        se encarregue de atualizá-la para você.</p>
+    <p>Há mais uma coisa a ser feita, ao executar programas construídos no Lazarus
+        no ambiente Linux pode surgir a seguinte mensagem de dependência no terminal:</p>
+    <textarea>
+    Gtk-Message: 00:00:00.000: Failed to load module "pk-gtk-module"
+    </textarea>    
+    <p>O programa executa normalmente, mas a falta dessa dependência pode indicar que algum aspecto 
+        visual não está como deveria ser, para corrigir o problema, execute:</p>
+    <textarea>
+    sudo -i
+    echo "/usr/lib64/gtk-3.0/modulesexit" > /etc/ld.so.conf.d/pk-gtk.conf
+    echo "/usr/lib64/gtk-2.0/modules" > /etc/ld.so.conf.d/gtk2.conf
+    ldconfig
+    </textarea>
+    <p>E a mensagem de dependência no terminal sumirá.</p>
+    <p>
+    Visite a página:<br>
+    https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases</p>
+    
 </body>
 </html>
