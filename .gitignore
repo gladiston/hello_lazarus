@@ -1,0 +1,11 @@
+# HTML
+bak/
+lib/
+log/
+logs/
+tmp/
+temp/
+superado/
+_superado/
+modules/
+*.bak
