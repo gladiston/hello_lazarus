@@ -9,5 +9,26 @@
 <body>
     <h1>Gerador de relatórios</h1>
     <hr>
+    <p>Há duas grandes opções de relatórios: o <strong>LazReport</strong> e o <strong>Fortes-CE</strong>.</p>
+    <p>O <strong>lazreport</strong> já acompanha a instalação do Lazarus, mas não é previamente instalado. 
+    Compor relatórios com ele é similar ao FastReport do Delphi. Você deposita um ou mais componentes no formulário
+    que identificarão o layout e fonte de dados, depois você trabalha o layout do relatório diretamente dentro
+    dele, o Lazarus é apenas um anfitrião coadjuvante no processo, o Lazreport tem dentro de si mesmo seus labels,
+    memos, graficos, etc... ele é autosuficiente não precisando pegar componentes LCL do Lazarus ou reramente
+    precisar de código de programação da sua parte para complementá-lo.</body>p>
+    <p>Isso pode ser bom por um lado, mas por outro torna-o menos flexível. Por exemplo, imagine imprimir um CNPJ,
+    mas o banco de dados tem apenas a parte numérica, sem a máscara, se fosse usando o Fortes, no label do CNPJ você
+    colocaria no evento OnBeforePrint algum código de programação que alteraria o valor colocando a máscara, 
+    já no LazReport você já tem uma propriedade de máscara para realizar essa operação para chegar ao mesmo resultado.</p>
+    <p>Então isso é um ponto positivo para o Lazreport, certo? Não, troque a mascara agora por um codigo onde precise
+    decifrá-lo antes de imprimir, o LazReport não tem algo para isso então você terá de trabalhar com variaiveis ou 
+    parametros que deverão ser calculados antes do processo iniciar-se, algo que é bem mais complexto do que colocar 
+    um evento no OnBeforePrint como você faria no Fortes Report</p>
+    <p>O <strong>Fortes report</strong> segue o paradigma de programação por bandas, isto é, você desenha relatórios 
+    no formulário colocando bandas que representam dados, cada banda pode representar um dataset e pode ser filha
+    de outra banda criando assim um relatório de mestre/detalhe. Geralmente as informações pode ser modificadas
+    usando os eventos OnBeforePrint da banda, do label ou qualquer outro componente que o acompanhe. Nele, você
+    esta literalmente programando um relatório com freepascal e as bandas serão um container de sequencia de 
+    eventos que apresentarão o relatório.</p>
 </body>
 </html>
