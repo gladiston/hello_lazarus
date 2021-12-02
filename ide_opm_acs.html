@@ -9,5 +9,52 @@
 <body>
     <h1>Instalação de Pacotes opcional via OPM: ACS - Audio Components</h1>
     <hr>
+    <p>Criar aplicações com áudio no Lazarus é tarefa para poucos, mesmo a operação mais banal como tocar um arquivo .wav
+    tem vários métodos diferentes, o mais comum e simples que envolve a unit ‘MMSystem’ só funciona para Windows. Contudo 
+    parece que temos um pacote vencedor que é multiplataforma, o ACS.</p>]
+    <p>A única dificuldade com o ACS é que dependendo do que irá fazer pode ser necessário carregar uma DLL junto com 
+    o .exe. Assim para tocar .wav em meus programas tenho que usar a uma forma mista, se compilo para Windows então uso o 
+    ‘MMSystem’ e se compilado para Linux então uso o ACS. Na prática meu código é assim, no uses:</p>
+    <p>
+<textarea rows=12 cols=80 disabled>
+uses
+  (...)
+  {$IFDEF WINDOWS}
+     MMSystem,
+  {$ENDIF}
+  {$IFDEF LINUX}
+    acs_misc,
+    acs_audio,
+    acs_cdrom,
+  {$ENDIF}
+  (...)
+</textarea></p>
+<p>E para tocar um .wav tenho de fazer desse jeito:</p>
+<p><textarea rows=21 cols=100 disabled>
+if FileExists(sSoundFile) then
+begin
+    {$IFDEF WINDOWS}
+        sndPlaySound(pchar(sSoundFile), snd_Async or snd_NoDefault); // unit MMSystem
+    {$ENDIF}
+    {$IFDEF LINUX}
+        AcsAudioOut1:=TAcsAudioOut.Create(nil);
+        AcsCDIn1:=TAcsCDIn.Create(nil);
+        try
+            AcsCDIn1.FileName:=sSoundFile;
+            AcsAudioOut1.Input:=AcsCDIn1;
+            AcsAudioOut1.DriverName:=Wavemapper;
+            AcsAudioOut1.Run;
+        finally
+            AcsAudioOut1.Free;
+            AcsCDIn1:Free;
+        end;
+    {$ENDIF}
+end;    
+    </textarea></p>
+    <p>E daí consigo tocar arquivos nos dois ambientes com um footprint menor quando o ambiente é Windows. 
+    Claro que a primeira vista parece ser complicado tocar .wav no Linux, a razão disso é que o ACS é um tiro
+    de canhão para matar um mosquito, ele foi feito para coisas mais avançadas do que tocar um .wav. </p>
+    <br>
+    <p><strong>ALERTA</strong>: O ACS é instalável apenas em versões estáveis do Lazarus.</p>
 </body>
 </html>

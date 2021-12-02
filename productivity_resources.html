@@ -9,5 +9,114 @@
 <body>
     <h1>Produtividade: Resources no Lazarus</h1>
     <hr>
+    <p>Há muita diferença entre os arquivos resources no Delphi e no Lazarus.</p>
+    <p>Resources é qualquer arquivo que você deseje embutir junto com o executável. A prática comum é ter imagens, 
+    efeitos sonoros, arquivos html/dll/etc espalhados ou distribuídos no disco durante a instalação. 
+    Usar resources significa que você pode embuti-lo no executável e ao executá-lo então usufruir desses recursos
+    da forma que desejar. Por exemplo, a utilização do CEF4(Navegador Chromium) embutido em nossa aplicação irá
+    requerer algumas DLLs no mesmo diretório do executável, claro eu posso criar um instalador que distribua essas DLLs 
+    para minha aplicação ou então usar o resources para transferir essas DLLs de dentro do executável para a pasta de 
+    instalação e garantir que o programa funcione com as DLLs planejadas. Mas seu uso não é restrito para extrairmos 
+    arquivos para o disco, essa é apenas uma das possibilidades, a mais comum é carregar imagens ou tocar efeitos 
+    sonoros com arquivos .jpg e .wav sem precisar extrair nada.</p>
+    <p>A forma como o Lazarus lida com resources - na minha opinião - é muito melhor do que a forma como o Delphi lidai, vamos as diferenças:</p>
+    <p>No Delphi, no início do projeto ou form você faria assim:</p>
+    <textarea rows=1 cols=80 disabled>{$R arquivo.res} </textarea>    
+    <p>No Lazarus usaremos assim:</p>    
+    <textarea rows=1 cols=80 disabled>{$R arquivo.lrs} ou {$I arquivo.lrs}</textarea>
+    <p>Não é apenas a extensão ou diretiva que muda, a forma de gerar o arquivo  arquivo.lrs também será diferente. 
+    Enquanto no Delphi você precisa criar um arquivo intermediário(.rc) contendo a lista dos arquivos que mais tarde 
+    serão transferido para um .res, por exemplo, um arquivo.rc assim:</p>
+    <textarea rows=2 cols=80 disabled>MYDATA        RCDATA        "mydata.dat" </textarea>          
+    <p>Onde cada linha deste arquivo(.rc) indicando um arquivo diferente para mais tarde gerar um arquivo.res. 
+    O delphi usa um utilitário interno - disponível na IDE - para converter este arquivo .rc->.res, no Lazarus
+    faremos isso através de um programa de linha de comando sem precisar dum arquivo intermediário(.rc), basta:</p>
+    <pre>C:\Lazarus\Tools\lazres.exe arquivo.lrs image1.jpg image2.jpg minhaDLL.dll</pre>
+    <p>E será gerado o arquivo arquivo.lrs que diferentemente do Delphi não é binário e pode ser versionado por
+    ferramentas como o git. Existe também uma GUI que simplifica essa operação e pode ser encontrado neste link:</p>
+    <p><a href="https://sourceforge.net/projects/lrsexplorer/">LRS Explorer</a></p>
+    <p>A forma de usar resources que achei mais adequado é incluir na seção Uses:</p>
+    <textarea rows=1 cols=80 disabled>uses ...LResources...;</textarea>       
+    <p>E para usufruir, vamos evitar fazer como a maioria dos programadores do Delphi fazem que é incluir a 
+    diretiva {$R} próximo a instrução </strong>implementation</strong>. A documentação do Lazarus recomenda que deveria 
+    estar na seção <strong>initialization</strong> (provavelmente criaremos ela)  na primeira unit a ser carregada
+    dentro do projeto:</p>
+<textarea rows=3 cols=80 disabled>
+initialization 
+{$I arquivo.lrs}        
+</textarea>    
+    <p>E para usufruir do conteúdo há várias formas, para imagens é feita dessa forma:</p>
+<textarea rows=9 cols=80 disabled>
+    procedure exampleproc;
+    var
+      Image: TImage
+    begin
+      Image := TImage.Create;
+      // note que não precisamos da extensão 
+      Image.Picture.LoadFromLazarusResource('image1'); 
+    end;          
+</textarea>    
+    <p>A melhor forma de usá-lo é como mostra o exemplo acima, carregando o resource diretamente para o componente 
+    sem tê-lo de escrever no disco antes, parece que boa parte dos componentes que usam TGraphic do Lazarus foram 
+    adaptados para permitir o carregamento diretamente dos resources dessa forma. No Delphi faríamos isso usando um TStream.</p>    
+    <p>Contudo,  a vida não é só feita de figuras e às vezes usamos arquivos de outros formatos como .dll para garantir
+    que o programa funcione corretamente. Então na carga inicial do programa precisaremos instruí-lo a
+    extraí-los para a pasta adequada.</p>
+    <p>Iríamos na seção <strong>initialization</strong> (ou criamos ela) da primeira unit a ser carregada no projeto e faríamos a extração assim:</p>
+<textarea rows=8 cols=100 disabled>
+initialization 
+    {$I arquivo.lrs}
+    RootDir:=ExtractFilepath(ParamStr(0));
+    Extract_ResFileTo('image1', RootDir+PathDelim+'img’+PathDelim+’image1.jpg');
+    Extract_ResFileTo('image2', RootDir+PathDelim+'img’+PathDelim+’image2.jpg');
+    Extract_ResFileTo('minhaDLL', ExtractFilepath(ParamStr(0))+PathDelim+'minhaDLL.dll');
+</textarea>
+    <p>O exemplo acima usou a função Extract_ResFileTo que não existe no Lazarus, segue o código da mesma:</p>
+<textarea rows=38 cols=100 disabled>
+function Extract_ResFileTo(AResName: String; ASaveFileTo: String):String;
+var
+    res: TLResource;
+    st: TLazarusResourceStream;
+begin
+    Result:=emptyStr;
+    st := nil;
+    if Result=emptyStr then
+    begin
+    if not DirectoryExists(ExtractFilePath(ASaveFileTo)) then
+    begin
+        // Cria o diretório de extração caso ele não exista
+        if not ForceDirectories(ExtractFilePath(ASaveFileTo)) then
+        begin
+        Result:='Diretorio não existe: '+ExtractFilePath(ASaveFileTo);
+        end;
+    end;
+    end;
+    if Result=emptyStr then
+    begin
+    res:=LazarusResources.Find(AResName);
+    if res=nil then
+    begin
+        Result:='RC com nome "'+AResName+'" não foi encontrada.';
+    end
+    else
+    begin
+        try
+        st := TLazarusResourceStream.Create(AResName, nil);
+        // salvando no disco
+        st.SaveToFile(ASaveFileTo);
+        finally
+        st.Free;
+        end;
+    end;
+    end;
+end;    
+</textarea>
+<p>Você vai encontrar essa necessidade de extrair resources files para o disco ao usar componentes como o CEF4,
+MPlayer dentre outros que precisam que DLLs específicas estejam no diretório do executável do seu projeto.
+Claro que poderia copiá-las manualmente, mas isso é improdutivo e sujeito a erros então o melhor mesmo é pegar
+tais DLLs e embuti-las como arquivos de resources e quando o programa iniciar-se então verificar a existência 
+das DLLs e caso não existam então extraí-las para a pasta adequada.</p>    
+    <p>Créditos:<br>
+    <a href="https://wiki.freepascal.org/Lazarus_Resources#Adding_resources_to_your_program">Adding resources to your program</a></p>
 </body>
 </html>
