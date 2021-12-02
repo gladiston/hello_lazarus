@@ -9,5 +9,40 @@
 <body>
     <h1>Instalação de Gerador de relatórios: Laz Report</h1>
     <hr>
+    <p>Há duas grandes opções de relatórios: o <strong>LazReport</strong> e o <strong>Fortes-CE</strong>, 
+    vamos instalar o LazReport.</p>
+    <p>O lazreport já acompanha a instalação do Lazarus, mas não é previamente instalado. 
+    Compor relatórios com ele é similar ao FastReport do Delphi. </p>
+    <p>Seu grande diferencial ao Fortes é que ele tem sua interface própria de relatório, isto é, você deposita
+    um componente no formulário e este componente lhe dá acesso a um editor de design de relatório que será a
+    unica ferramenta de trabalho, quase sem código de programação da sua parte, você apenas precisará dos
+    datasources e o restante é com o design e quase não carecendo de programação por cima. Isso pode ser bom
+    por um lado, mas por outro torna-o menos flexível. </p>
+    <p>Por exemplo, imagine imprimir um CNPJ, mas o banco de dados tem apenas a parte numérica, sem a máscara, 
+    se fosse usando o Fortes, no label do CNPJ você colocaria no evento OnBeforePrint algum código de programação 
+    que alteraria o valor colocando a máscara, já no LazReport você já tem uma propriedade de máscara para realizar
+    essa operação. Mas se houvesse uma intervenção onde não haveria uma propriedade específica para o que deseja,
+    seu trabalho seria bem mais complexo do que o faria com o Fortes.</p>
+    <br>
+    <p>Para instalar o LazReport neste passo, vá em <strong>Pacote->Instalar e desinstalar pacotes</strong> e marque 
+    para instalação os seguintes pacotes:</p>
+    <ol>
+        <li>lazreport</li>
+        <li>lazfpreportdesign</li>
+        <li>lclfpreport</li>
+        <li>lr_codereport_pkg</li>
+    </ol>
+    <p>Depois de compilar e instalar os pacotes acima, prossiga com estes também:</p>
+    <ol>
+        <li>lazreportpdfexport: Fornece a possibilidade de exportar um relatório do lazreport para o 
+            formato pdf. (requer dependencia powerpdf)</li>
+        <li>lrspreadsheetexport: Fornece a possibilidade de exportar um relatório do lazreport para o
+            formato xls,xlsx,ods,.... (requer dependência FPSpreadsheet já instalada)</li>
+        <li>lazidefpreport</li>
+    </ol>    
+    <p>Fique atento aos componentes marcados que exigem suas dependências previamente instaladas. 
+    Podem existir outras referências de componente iniciando com as letras <strong>lazIstoOuAquilo</strong> que 
+    acrescentam mais recursos ao lazreport que talvez queira instalar, mas corre-se o risco de haver dependências
+    e você deve ficar atento a elas antes de prosseguir. Se instalar algo que bugou sua IDE volte ao tópico “A prova de balas”.</p>
 </body>
 </html>
