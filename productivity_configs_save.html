@@ -7,7 +7,24 @@
     <title>Produtividade: Salvando configuração para a posteridade</title>
 </head>
 <body>
-    <h1>Produtividade: Salvando configuração para a posteridade</h1>
-    <hr>
+    <h1>Produtividade: Salvando configuração para a posteridade</h1><hr>
+    <p>Com o passar do tempo, podemos querer instalar o Lazarus novamente, daí temos que repetir 
+    novamente toda essa configuração. É útil saber que todas as configurações que fizemos até 
+    aqui estão em arquivos .xml que estão na pasta:</p>
+    <p>No Windows:</p>
+    <textarea rows=1 cols=100 disabled>%USERPROFILE%\AppData\Local\Lazarus</textarea>
+    <p>No Linux a pasta pode variar de lugar conforme o método de instalação que usou:</p>
+    <textarea rows=4 cols=100 disabled>
+Instalação via repositório da distro:  $HOME/.lazarus
+Instalação via GIT: $HOME/.lazarus
+Compilação via FPCUpDeluge: $HOME/fpcupdeluxe/config_lazarus/
+</textarea>    
+    <p>Por isso é uma boa prática quando terminamos algumas configurações/ajustes e gostaríamos de
+     mantê-la para a posteridade salvá-la num formato .zip ou em outro qualquer. Geralmente eu a
+     mantenho compactada e guardo o zip noutro local. Quando for preciso basta descompactar no mesmo
+     diretório e as configurações e ajuste que fizemos retornam ao que era no backup. Também lhe
+     será útil quando instalar noutro computador.</p>
+    <p>Além das configurações, a pasta acima também guarda outras coisas como templates criados, 
+    aplicativos acrescentados em <strong>Tools</strong> e muito mais..</p>
 </body>
 </html>
