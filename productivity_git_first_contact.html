@@ -9,5 +9,28 @@
 <body>
     <h1>Produtividade: Lazarus com GIT</h1>
     <hr>
+    <p>Os comandos abaixo valem apenas para o projeto atual a menos que use --global daí pastas sem identificação de usuário usarão o parâmetro global:</p>
+<textarea rows=3 cols=100 disabled>
+git config user.name "Meu nome"  
+git config user.email "meuemail@gmail.com"    
+</textarea>
+<p>Talvez aprecie também estes, útil para lidar arquivos provenientes do Windows:</p>
+<textarea rows=4 cols=100 disabled>
+git config core.autocrlf false
+git config core.ignorecase true 
+git config core.fileMode false   
+</textarea>
+<p>Usa git na nuvem? que tal 8h sem digitar a senha novamente? Ou 86400 para 1 dia inteiro</p>
+<textarea rows=3 cols=100 disabled>
+    git config credential.helper store
+    git config credential.helper 'cache --timeout=28800'    
+</textarea>
+<p>Mas no linux isso não funciona mais, assim é necessário dar permissão ao sistema operacional 
+como detentor de sua chave para essas operações então use o seguinte comando:</p>
+<textarea rows=3 cols=100 disabled>
+sudo dnf install git-credential-libsecret
+git config credential.helper /usr/libexec/git-core/git-credential-libsecret
+</textarea>
+<p>Claro que o primeiro ‘git push’ ainda necessitará de suas credenciais, mas não será assim nas vezes posteriores.</p>
 </body>
 </html>
