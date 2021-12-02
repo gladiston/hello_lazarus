@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalização da IDE: Docagem</title>
+    <title>Personalização da IDE: Docagem básica</title>
 </head>
 <body>
-    <h1>Personalização da IDE: Docagem</h1>
+    <h1>Personalização da IDE: Docagem básica</h1>
     <hr>
     <p>O padrão do Lazarus é ter: Editor de propriedades de componentes, editor de código e explorador de código+componentes com cada uma de suas janelas vazadas,
          isto é, separados da IDE principal e como janelas independentes. Isso pode ser um pouco espalhafatoso no início, então se você quiser algo mais integrado
          a IDE poderemos juntar o editor de código, propriedades, explorador de código+componentes mais integrados à IDE. Não ficará 100% parecido com o Delphi 
          porque o editor de formulário continuará separado dos restantes, ficando assim:</p>
-         <p><img src="img/docagem_1.png"></p>  
-         <p>Note que o formulário ainda estará separado(vazado), portanto diferente do Delphi.</p>
+         <p><img style="width: auto; height: 100%; "src="img/docagem_1.png">
+            <figcaption>Note que o formulário ainda estará separado(vazado), portanto diferente do Delphi.</figcaption>
+        </p>  
          <p>Se gostou da ancoragem acima, então vá em Packages->Install/Uninstall packages(Instalar/desinstalar pacotes) e selecione os seguintes pacotes 
             para instalação:</p>
+<textarea rows=2 cols=80 disabled>AnchorDocking
+AnchorDockingDsgn</textarea>    
         <p><img src="img/docagem_2.png"></p> 
-        <p>Depois de adicionar os pacotes indicados clique em “Salvar e reconstruir IDE”.
+        <p>Depois de adicionar os pacotes indicados clique em <strong>“Salvar e reconstruir IDE”</strong>.
             Ao iniciar o IDE pela segunda vez, o programa já aparecerá com algumas docagens.
             </p>
             <p>Agora temos um ambiente melhor, porém note que a janela de design de formulário está separada do editor de código. Há uma polêmica aqui, do jeito que 
