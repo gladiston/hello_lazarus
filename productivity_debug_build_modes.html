@@ -9,5 +9,61 @@
 <body>
     <h1>DEBUG OR NOT DEBUG, that is the question</h1>
     <hr>
+    <p>Vamos agora aos BuildsModes, o que são eles?</p>
+    <p>Ao compilar um projeto você esta informando como deseja a compilação, o padrão do Lazarus é bem básico e todas as vezes
+     que compilar vai incluir um peso de debug ao seu projeto o que o tornará mais pesado e lento do que deveria ser.</p>
+    <p>Como exemplo, um aplicativo básico com CRUD de 16 tabelas e 42 units com classes e formulários tem 56MB, 
+    nada mal hein? Porém se removermos o debug, além de mais rápido e ágil, o executável final cai para 16MB!</p>
+    <p>Este é o peso do debug incorporado ao projeto e estamos falando de um debug que é ajustado para ser bem básico,
+     dá para ter um debug ainda maior com alguns ajustes que nos dão ainda mais informação na hora de debugar um programa. Então precisamos ter BuildsMode para cada intenção nossa, por exemplo, debug básico para encontrar falhas de rotina que talvez mostrem a linha e o valor de variáveis, um debug mais completo que varre o retorno de funções/métodos/propriedades e outro que é compilar sem debug nenhum para entregar um executável otimizado.</p>
+    <p>Vá em <strong>Projet->Project Options</strong>, depois selecione a guia <strong>Compiler Options</strong>. Você acaba de encontrar esta tela configuração com Build modes chamada “Default”:</p>
+    <p>
+        <img src="img/productivity_debug_build_modes1.png" alt="Opções de compilação, Build modes" width="auto" height="auto">
+    </p>
+    <p>Vamos acrescentar mais um, clique em “...”:</p>
+    <p><img src="img/productivity_debug_build_modes2.png" alt="Trocando Build modes" width="auto" height="auto"></p>    
+    <p>Na janela seguinte, em Build Mode “Default” clique em “+” para criar mais um:</p>
+    <p><img src="img/productivity_debug_build_modes3.png" alt="Acrescentando mais um Build mode" width="auto" height="auto"></p>      
+    <p>E dê um nome significativo para o que iremos fazer agora, vamos chamá-lo de <strong>“DebugCronico”</strong>:</p>
+    <p><img src="img/productivity_debug_build_modes4.png" alt="Dando um nome mais conviniente" width="auto" height="auto"></p>      
+    <p>Agora você clicará em OK e fechará a janela atual e retornará a que estavamos antes, note na parte superior:</p>
+    <p><img src="img/productivity_debug_build_modes5.png" alt="Selecionando o Build mode" width="auto" height="auto"></p>      
+    <p>O Build mode está ajustado para <strong>“DebugCronico”</strong>, qualquer configuração que fizermos estará sob este nome,
+    então vamos fazer alguns ajustes que estarão sob este build mode.</p>
+    <ol>
+        <li><Strong>Ver o console do programa em execução:</Strong> No Linux é bastante comum durante a execução de programas no
+        terminal que ocorra a exibição de mensagens indicando comportamentos do programa que às vezes indicam problemas,
+        eles até podem não ser fatais, por exemplo, uma fonte que seu programa usa e não está instalada no sistema e teve de ser
+        substituída por outra é um índicio importante de "porque" o programa parece diferente do que em outros computadores.
+        Não estou convencido de que habilitar essa opção no ambiente tenha o mesmo efeito que no Windows, creio que no Windows
+        não há stdout desse tipo enviado pelo sistema operacional. <br>
+        Mas se estiver no Linux, vamos ligar essa opção quando compilarmos um programa sob <strong>“DebugCronico”.</strong><br>
+        Vá em Compiler <strong>Options->Config and Target</strong> e desligamos a opção <strong>Win32 ui application:</strong>
+        <br>
+        <img src="img/productivity_debug_build_modes6.png" alt="Win32 ui application" width="auto" height="auto">
+       </li>
+       <li><strong>Debug para debugar:</strong> Vá em <strong>Compiler Options</strong> e depois em <strong>Compiling Linking</strong>
+       e lá encontrará vários níveis de debug, o padrão é o “1” que é agradável para a maioria dos casos, mas se desejamos 
+       um <strong>Debug Crônico</strong> então vamos ajustá-lo em <strong>Optimizations levels</strong> para 0 (zero):<br>
+       <img src="img/productivity_debug_build_modes7.png" alt="Optimizations levels" width="auto" height="auto">
+       </li>
+       <li><strong>Verbosidade:</strong> Indique coisas que gostaria que o debugger fosse próativo e lhe indicasse alguns 
+        problemas antes mesmo que acontecem em forma de warning. Vá em <strong>Compiler Options</strong> e depois em 
+        <strong>Verbosity</strong> e lá encontrará uma séries de opções, algumas já vem marcadas, vamos acrescentar 
+        <strong>Show debug info</strong>:<br>
+        <img src="img/productivity_debug_build_modes8.png" alt="Verbosidade" width="auto" height="auto">
+       </li>
+    </ol>
+    <p>Estes foram os ajustes que me ajudaram muito, clique em OK.</p>
+    <p>Agora ao compilar um programa com <strong>F9</strong> ou <strong>Ctrl+F9</strong> você estará usando o perfil 
+    <strong>“DebugCronico”</strong> todas as vezes, mas quando precisar trocar vá em <strong>Project->Options</strong>
+    e troque o <strong>Build Mode</strong> para o que deseja usar:</p>
+    <p><img src="img/productivity_debug_build_modes9.png" alt="Trocando o build mode" width="auto" height="auto"></p>
+    <p>Seja esperto agora e crie um Build Mode com o nome <strong>“DebugDesligado”</strong> e desligue as opções de debug,
+        todas elas. Você usará este build mode quando for gerar um executável final para a linha de produção.</p>
+    <p><strong>Considerações finais:</strong> O Build Mode não é apenas para compilar e debugar. Cada <strong>Build mode</strong>
+     pode ser usado para uma finalidade diferente, por exemplo, um deles para crosscompiler e gerar programas para
+     Linux, Windows, 32/64bits e ainda outras plataformas.</p>
+
 </body>
 </html>
