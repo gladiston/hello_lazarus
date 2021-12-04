@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalação de Pacotes via GIT: ZeosLib</title>
+</head>
+<body>
+    <h1>Instalação de Pacotes via GIT: ZeosLib</h1>
+    <hr>
+    <p>Principal suíte de acesso a banco de dados.  Dá para utilizá-lo também no Delphi <strong>Comunity Edition</strong>.</p>
+    <p><a href="https://sourceforge.net/projects/zeoslib/">ZeosLib download | SourceForge.net</a></p>
+    <p><strong>IMPORTANTE #1:</strong> É altamente recomendável instalar via OPM, siga estas instruções apenas 
+    quando deseja experimentar uma versão diferente da que é instalada via OPM.</p>
+    <p>Para uma instalação manual do zeos via GIT, faça o seguinte:</p>
+    <pre>
+cd ~/fpcupdeluxe/lazarus/components (ou diretorio onde ficam seus componentes)
+git clone https://github.com/marsupilami79/zeoslib.git  (esse é o zeos8 beta)
+cd zeoslib
+git branch -r</pre>
+<textarea rows=13 cols=100 disabled>
+(...)
+origin/7.2.12-stable
+origin/7.2.14-stable
+origin/7.2.3-rc
+origin/7.2.4-stable
+origin/7.2.6-stable
+origin/8.0-patches
+origin/HEAD -> origin/master
+origin/master
+origin/testing-7.3
+origin/testing-7.3-aehimself
+(...) 
+</textarea>
+<p>Ao ver a listagem acima determine qual é a versão desejada, acaso tenha escolhido <strong>7.2.14-stable</strong> então execute:</p>
+<pre>git switch 7.2.14-stable</pre>
+<p>Vá no <strong>Lazarus->Package->Open Package File(.lpk)</strong> e com exceção do pacote zcomponentdesign.lpk,
+    abra todos os demais *.lpk em <strong>[lazarus-install]/components/zeoslib/packages/lazarus:</strong></p>
+<p><img src="img/ide_opm_zeos_git1.png" alt="Versão final da ancoragem" width="920" height="auto"></p>
+<p>Tendo compilado os os pacotes mencionados agora abra o pacote <strong>zcomponentdesign.lpk</strong> e depois vá na opção <strong>Use->Install</strong>:</p>
+<p><img src="img/ide_opm_zeos_git2.png" alt="Versão final da ancoragem" width="920" height="auto"></p>
+<p>Depois de Compilar e Instalar, será necessário confirmar a compilação da IDE e reiniciá-la.</p>
+<p>Após, basta conferir os componentes em sua paleta:</p>
+<p><img src="img/ide_opm_zeos_git3.png" alt="Versão final da ancoragem" width="920" height="auto"></p>
+<p>Como pode ver, a paleta do Zeos fica bem longe do ‘Data Access’ onde estão componentes relacionados a 
+banco de dados, faríamos bem em clicar com o botão direito sobre a paleta, ir em <strong>Options</strong>
+e trazer a paleta do Zeos para depois da seção <strong>‘Data Acces’</strong>:</p>
+<p><img src="img/ide_opm_zeos_git4.png" alt="Versão final da ancoragem" width="920" height="auto"></p>
+<p>Clique em <strong>‘OK’</strong> e estará tudo pronto.</p>
+</body>
+</html>
