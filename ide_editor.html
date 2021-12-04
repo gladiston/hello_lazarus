@@ -9,5 +9,86 @@
 <body>
     <h1>Personalização da IDE: Editor de código</h1>
     <hr>
+    <p>Neste ponto em diante, todas as opções são dedicadas a melhorar o IDE de código. 
+    Portanto, todas as opções estarão em <strong>Tools->Options</strong>.</p>
+    <p><strong>MINIMIZAR AO RODAR (dispensável):</strong> No Delphi - em algumas versões - ao rodar (F9) o programa, 
+    o comportamento comum é a IDE ser minimizada e isso ajuda quando lidamos com muitos programas simultaneamente, 
+    mas isso não ajuda se sua intenção for debugar e acompanhar a execução com breakpoints. Caso queira essa opção
+    ligada então vá em <strong>->Enviroment->Window</strong> e então marque a opção <strong>Hide IDE windows on run</strong>. 
+    Eu mantenho essa opção desligada porque faço muito uso de breakpoints no dia a dia.</p>
+    <p><strong>MOSTRAR O NOME DO PROJETO (altamente recomendado):</strong> Parece sem importância, mas me faz falta 
+    ver o nome do projeto no título da IDE, se também faz falta para você então vá em <strong>->Enviroment->Window</strong>
+    e marque a opção <strong>IDE title starts with project name</strong>:</p>
+    <p><img src="img/ide_editor1.png" alt="MOSTRAR O NOME DO PROJETO" width="auto" height="auto"></p>
+    <p><strong>PERGUNTAR O NOME DO COMPONENTE AO ARRASTÁ-LO PARA O FORMULÁRIO:</strong> Algo que considero muito útil]
+    é ao arrastar um componente ao formulário então ser obrigado a escolher um nome para ele. Será o fim dos label1, label2, 
+    label3…. pode ser um pouco trabalhoso até se acostumar, mas isso facilita muito a manutenção do código fontes depois.
+    Vá em <strong>->Enviroment->Form Editor</strong>  e então ativar a opção <strong>Ask name on create</strong>.</p>
+    <p><strong>REDUZA A GRADE XY DO FORMULÁRIO</strong>, aproveite para mudar o Grid size Y e Y de 8 para 4px para 
+    que os alinhamentos com o mouse sejam mais precisos:</p>
+    <p><img src="img/ide_editor2.png" alt="PERGUNTAR O NOME DO COMPONENTE AO ARRASTÁ-LO PARA O FORMULÁRIO e REDUZA A GRADE XY DO FORMULÁRIO" width="auto" height="auto"></p>
+    <p>Opcionalmente, também poderá marcar <strong>Change Object Inspector contents on clicking form title bar</strong>, ela o ajudará
+    quando precisar pegar as propriedades e eventos do form por apenas tocar no título do form, mas essa é uma opção 
+    que ainda não está funcionando, parece que foi planejada para a versão posterior.</p>
+    <p>Opcionalmente, também poderá ligar a opção <strong>show border spacing</strong>, ela o ajudará a reconhecer o
+    espaço entre as bordas e o componente container quando o tamanho(borderwidth) da borda for zero, muito útil para
+    quem faz uso de padding ou ancoragem de componentes visuais:</p>
+    <p><img src="img/ide_editor3.png" alt="show border spacing" width="auto" height="auto">
+    <figcaption>as linhas vermelhas estão indicando os espaços existentes entre o componente principal e o componente container</figcaption>
+    </p>
+    <p><strong>TAMANHO DA TABULAÇÃO (altamente recomendado):</strong> Tabulação muito espaçada pode incomodar, o padrão
+    é 8, se quiser alterar este padrão vá em <strong>->Editor->General->Tab and Ident</strong>  e em <strong>Tab widths</strong>
+    troque de <strong>8</strong> para 2 ou 4. Eu pessoalmente, prefiro “2”:</p>
+    <p><img src="img/ide_editor4.png" alt="TAMANHO DA TABULAÇÃO" width="auto" height="auto"></p>    
+    <p><strong>MARGEM DIREITA(altamente recomendado):</strong> É uma boa prática evitar o side-scrolling, por isso usamos 
+    uma linha vertical que indica o momento certo de quebrar a linha. Quando estamos em terminais programando com editores
+    de texto como vim, emacs e outros não ousariamos mudar essa margem de 80 caracteres, mas estamos num ambiente gráfico
+    e ninguém que eu conheça que use Delphi ou Lazarus o faz com resoluções baixas então parece ser cabível trocar de 80
+    para 100 ou mais caracteres, conforme sua preferência. Vá em  <strong>->Editor->Display</strong> e em 
+    <strong>Visible Right Margin</strong> e faça a alteração:</p>
+    <p><img src="img/ide_editor5.png" alt="MARGEM DIREITA" width="auto" height="auto"></p>
+    <p><strong>FONTE PADRÃO (altamente recomendado):</strong> Vá em <strong>->Editor->Display</strong> e em 
+    <strong>“Default editor font”</strong> troque de <strong>Courier New 10</strong> para <strong>Consolas</strong> no tamanho
+    que preferir. Outra opção de fonte é a <strong>Noto Mono (Linux)</strong>, ambas - na minha opinião - são muito melhores
+    que a Courier que é o padrão do Lazarus e o Delphi:</p>
+    <p><img src="img/ide_editor6.png" alt="FONTE PADRÃO" width="auto" height="auto"></p>
+    <p><strong>CORES (dispensável):</strong> Eu costumo manter as cores do FreePascal que me parecem bem adequadas, 
+    não há ganho real em trocá-las a menos que as cores do Delphi estejam bem enraizadas em você. Para trocar vá
+    em <strong>->Editor->Display->Colors</strong> e na parte superior onde está o estilo de cor <strong>“Default”</strong>
+    você pode optar por <strong>“Delphi”</strong>:</p>
+    <p><img src="img/ide_editor7.png" alt="CORES" width="auto" height="auto"></p>
+    <p><strong>CORES DA LINHA ATUAL ONDE ESTIVER O CURSOR(altamente recomendado):</strong> Algo que acontece com certa 
+    frequência são os saltos de uma linha para outra com <strong>Ctrl+Seta, Alta+Seta</strong>, mas nem sempre localizamos
+    rapidamente onde o cursor de edição se posicionou, por isso, vamos habilitar um Hightlight na linha em que o cursor 
+    estiver posicionado. Vá em <strong>->Editor->Display->Colors</strong> e nos elementos na coluna do meio procure por
+    <strong>“Current line highlight”</strong> e então na parte de baixo faça os ajustes de cores que lhe agradem mais,
+    para mim o <strong>FUNDO VERDE COM FONTE BRANCA E EM NEGRITO</strong> é ideal. No mostrador a direita é exibido 
+    um exemplo de como ficará:</p>
+    <p><img src="img/ide_editor8.png" alt="CORES DA LINHA ATUAL ONDE ESTIVER O CURSOR" width="auto" height="auto"></p>
+    <p><strong>INDICADORES DE CORRESPONDÊNCIA (altamente recomendado):</strong> Algo muito útil é a colorização de blocos
+    begin..end, if..then..else, etc… e  realçar termos perigosos como a cláusula “not”, veja este exemplo:</p>    
+    <p><img src="img/ide_editor9.png" alt="INDICADORES DE CORRESPONDÊNCIA" width="auto" height="auto"></p>
+    <p>Como isso é feito? Apenas vá na opção <strong>->Editor->Display->Markup and Matches->Outline</strong> e ligue-a:</p>    
+    <p><img src="img/ide_editor10.png" alt="Ligando INDICADORES DE CORRESPONDÊNCIA" width="auto" height="auto"></p>
+    <p>Daí então seus blocos serão colorizados, particularmente é mais rápido do que seguir com os olhos as linhas verticais
+    em alguns tipos de blocos e fácil de ver blocos com a cláusula de negação “not”</p>
+    <p><strong>OCULTAR O MOUSE NO EDITOR ENQUANTO DIGITA(dispensável):</strong> Uma boa parte de nós usamos notebook e o
+    touchpad cria algumas inconveniências, no Linux é possível desligar o ponteiro quando estiver digitando e isso funciona
+    para o ambiente inteiro, no Windows nem sempre existe essa opção, então neste caso vá em <strong>->Editor->Mouse</strong>
+    e marque a opção <strong>“Hide mouse pointer when typing”</strong>:</p>
+    <p><img src="img/ide_editor11.png" alt="OCULTAR O MOUSE NO EDITOR ENQUANTO DIGITA" width="auto" height="auto"></p>
+    <p><strong>REMOVER MÉTODOS VAZIOS (altamente recomendado):</strong> Aqueles métodos OnCreate, OnClick,... onde foram 
+    criados SEM QUERER e ficam com o bloco vazio, pois é, por padrão o Lazarus os manterá. Se quiser alterar este comportamento
+    você irá em </strong>->Editor->Completion and hints (Completação e Dicas)</strong> e ligar a opção 
+    <strong>Auto remove empty methods (Auto remover métodos vazios)</strong>:</p>
+    <p><img src="img/ide_editor12.png" alt="REMOVER MÉTODOS VAZIOS" width="auto" height="auto"></p>
+    <p><strong>PULAR DIRETO PARA O CÓDIGO (altamente recomendado):</strong> O Lazarus tem um comportamento de 
+    <strong>Ctrl+Click</strong> sobre um método que está noutra unit e então pular para a declaração ao invés do bloco de código,
+    daí então usar <strong>Ctrl+SetaAbaixo</strong> para pular para o código do método. Estou acostumado a dar o 
+    <strong>Ctrl+Click</strong> e ir direto para o código do método e se você também prefere assim então vá em 
+    <strong>->CodeTools (Ferramentas de código)</strong> e em <strong>Jump directly to method body</strong> mude para ligado:</p>
+    <p><img src="img/ide_editor13.png" alt="PULAR DIRETO PARA O CÓDIGO" width="auto" height="auto"></p>
+    <p>Salve a janela de Opções de IDE clicando em <strong>“OK”</strong>.</p>
+
 </body>
 </html>
