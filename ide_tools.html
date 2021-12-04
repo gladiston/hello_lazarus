@@ -9,5 +9,63 @@
 <body>
     <h1>Personalização da IDE: Menu de ferramentas(Tools)</h1>
     <hr>
+    <p>O menu <strong>Tools</strong> do Lazarus assim como no Delphi permite que acrescentemos ferramentas
+     exteriores para que não precisemos ir até o gerenciador de arquivos ou menu do sistema para chamá-los.
+     Para acrescentar programa vamos em <strong>Tools->Configure External Tools</strong>, 
+     daí então temos uma janela assim:</p>
+     <p><img src="img/ide_tools1.png" alt="Tools" width="auto" height="auto"></p>
+     <p>É muito inútil a lista vazia então vamos acrescentar algumas ferramentas, por exemplo, o DBeaver 
+    que é uma ferramenta bastante interessante para vasculhar e procurar informações em banco de dados,
+    clique em Add e prossiga informando os campos essenciais:</p>
+    <p><img src="img/ide_tools2.png" alt="Tools" width="auto" height="auto"></p>
+    <p>As informações de <strong>“Program Filename”</strong> e <strong>“Parameters”</strong> você retira
+    dos próprios atalhos que chamam os programas instalados. Com mais experiência notará que a opção 
+    <strong>Key</strong> mais embaixo serve para informarmos uma tecla de atalho global para chamar 
+    este programa diretamente, por exemplo, <strong>Ctrl+Shif+D</strong> para chamar imediatamente o
+    programa DBEaver sem a necessidade de escolhê-lo no menu. Se tiver que acrescentar o mesmo programa,
+    porém com parâmetros diferentes, use a opção de <strong>Clonar</strong> no botão <strong>“Mais”</strong>.</p>
+    <p>Você pode também incluir atalhos para as páginas na internet que você consome mais como forums, 
+    arts, gitbub, … Por exemplo, muitos programadores usam o site <a href="romannurik.github.io">romannurik.github.io</a>
+    para obter/criar ícones para usar em seus programas e projetos, o segredo neste caso é usar o atalho para o navegador
+    e o parâmetro para indicar o site que desejamos, veja o exemplo abaixo:</p>
+    <p><img src="img/ide_tools3.png" alt="atalhos para as páginas na internet" width="auto" height="auto"></p>
+    <p>Faça isso para as páginas mais acessadas de sua plataforma de programação, ficando mais ou menos assim:</p>
+    <p><img src="img/ide_tools4.png" alt="atalhos para as páginas na internet" width="auto" height="auto"></p>
+    <p>O exemplo acima foi para a plataforma Windows, mas a mesma técnica serve de forma semelhante para a plataforma Linux. </p>
+    <p>Quem usa Linux geralmente conhece sua plataforma, mas segue algumas dicas que são importantes para
+    simplificar a localização de programas usando o terminal:</p>
+    <p>whereis firefox<br>
+        <textarea rows=2 cols=100 disabled>firefox: /usr/bin/firefox /usr/lib64/firefox /etc/firefox /usr/share/man/man1/firefox.1.gz</textarea>            
+    </p>
+    <p>whereis flamerobin<br>
+        <textarea rows=2 cols=100 disabled>flamerobin: /usr/local/bin/flamerobin</textarea>            
+    </p>
+
+    <p>Mas o <strong>whereis</strong> não localiza programas instalados via snap ou flatpak, estes gerenciadores de 
+    programas usam seus próprios mecanismos, por exemplo, para localizar um programa instalado via <strong>flatpak</strong>
+    usando o comando ‘flatpak list’:</p>
+    <p>flatpak list|grep VLC<br>
+    <textarea rows=2 cols=100 disabled>VLC	org.videolan.VLC	3.0.16	stable	system</textarea></p>
+    <p>ou se o programa já estiver em execução será mais fácil ainda:</p>
+    <p>flatpak ps<br>
+    <p><textarea rows=3 cols=100 disabled>
+Instância  PID  Aplicativo           Runtime
+2790350712 2319 org.telegram.desktop org.freedesktop.Platform</textarea></p>
+    <p>Então para rodar, precisamos apenas do nome flatpak dele e executá-lo assim:</p>
+    <p><textarea rows=3 cols=100 disabled>
+flatpak run org.videolan.VLC 
+flatpak run org.telegram.desktop</textarea></p>
+<p>Então poderá criar atalhos usando a forma como seu sistema está habituado a funcionar.</p>
+<p>No ambiente Windows, considero imprescindível os seguintes programas no menu tools:</p>
+<ol>
+    <li><strong>DBWeaver:</strong> D:\Apps\DBeaver\dbeaver.exe -nl en</li>
+    <li><strong>FlameRobin:</strong> "C:\Program Files\FlameRobin (x64)\flamerobin.exe"</li>
+    <li><strong>LRS Explorer:</strong> "D:\Apps\LRS Explorer\LRS_Explorer.exe"</li>
+    <li><strong>Mapa de caracteres:</strong> %windir%\system32\charmap.exe</li>
+    <li><strong>iconsdb:</strong> "C:\Program Files\Google\Chrome\Application\chrome.exe" https://www.iconsdb.com/</li>
+    <li><strong>Android Asset Studio:</strong> "C:\Program Files\Google\Chrome\Application\chrome.exe" https://romannurik.github.io/AndroidAssetStudio/</li>
+    <li><strong>PessoasQueNaoExistem:</strong> "C:\Program Files\Google\Chrome\Application\chrome.exe" https://thispersondoesnotexist.com/</li>
+</ol>
+<p>Também haverá outros programas. Considere usar uma tecla de atalho para os programas externos ou sites mais usados.</p>
 </body>
 </html>
