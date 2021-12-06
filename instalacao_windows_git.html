@@ -9,16 +9,16 @@
 <body>
     <h1>Instalação no Windows: Usando GIT</h1>
     <hr
-<p>A maioria dos que estiverem lendo essas instruções irão preferir usar o <strong>Instalador do Lazarus</strong> 
-    ou o <strong>fpcupdeluge</strong>. Porém há uma terceira via que funciona para Windows e Linux,
-    a instalação diretamente do código fonte do Lazarus, parece complicado, mas não é se você já 
-    compilou programas via GIT antes. Há algumas vantagens nisso, a versão binária compilada por você
-    mesmo será específica para o seu hardware e portanto mais veloz que a versão do instalador, 
-    assim como no fpcupdeluge. Porém essa terceira via é mais econômica e rápida do que usando 
-    o fpcupdelge orque usaremos o FreePascal(FPC daqui em diante) pré-instalado.</p>
-    <p>Como o Lazarus está num repositório GIT, temos outra vantagem com relação a aplicação de 
-       atualização de versão. Siga as instruções abaixo, embora sejam para o Windows, os princípios 
-       são os mesmos para Linux.</p>
+    <p>A maioria dos que estiverem lendo essas instruções irão preferir usar o <strong>Instalador do Lazarus</strong> 
+        ou o <strong>fpcupdeluge</strong>. Porém há uma terceira via que funciona para Windows e Linux,
+        a instalação diretamente do código fonte do Lazarus, parece complicado, mas não é se você já 
+        compilou programas via GIT antes. Há algumas vantagens nisso, a versão binária compilada por você
+        mesmo será específica para o seu hardware e portanto mais veloz que a versão do instalador, 
+        assim como no fpcupdeluge. Porém essa terceira via é mais econômica e rápida do que usando 
+        o fpcupdelge porque usaremos o FreePascal(FPC daqui em diante) pré-instalado.</p>
+     <p>Como o Lazarus está num repositório GIT, temos outra vantagem>:atualização de versão. <br>
+         Siga as instruções abaixo, embora sejam para o Windows, os princípios 
+           são os mesmos para Linux.</p>
     <ol>
     <li>
         <p>Instale o FPC a partir do instalador oficial:<br>
@@ -77,14 +77,14 @@ remotes/origin/fixes_2_0
 remotes/origin/fixes_2_2
 (...)    
 </textarea>
-    <p>E então escolha um branch das que foram listadas, se for a 2.2, escolha
-        <strong>fixes_2_2</strong> que incluirá a 2.2.x mais os fixes, isto é, as correções 
-        da série 2.2. Mas se desejar uma versão que já está saindo do forno, volte ao passo anterior 
-        e renomeie o diretório de <strong>c:\lazarus\lazarus22</strong> para outro nome 
-        mais conveniente com a versão escolhida. Para prosseguir com o nosso exemplo usando 
-        <strong>fixes_2_2</strong>:</p>
-        <pre>git switch  fixes_2_2</pre>
-    </li> 
+<p>E então escolha um branch das que foram listadas, escolha a <strong>fixes_2_2</strong> que
+    incluirá a 2.2.x mais os fixes, isto é, as correções  da série 2.2. Mas se desejar 
+    uma versão que já está saindo do forno, volte ao passo anterior  e renomeie o diretório
+    de <strong>c:\lazarus\lazarus22</strong> para outro nome  mais conveniente com a versão escolhida
+    e repita os passos anteriores novamente. 
+    Para prosseguir com o nosso exemplo usando o <strong>fixes_2_2</strong>:</p>
+    <pre>git switch  fixes_2_2</pre>
+</li> 
     <li><p>Vamos compilar, ainda no cmd.exe execute:</p>
 <pre>make clean 
 make bigide
