@@ -14,36 +14,34 @@
     a instalação diretamente do código fonte do Lazarus, parece complicado, mas não é se você já 
     compilou programas via GIT antes. Há algumas vantagens nisso, a versão binária compilada por você
     mesmo será específica para o seu hardware e portanto mais veloz que a versão do instalador, 
-    assim como no fpcupdeluge. Porém essa terceira via é mais econômica porque usaremos o FreePascal
-    pré-instalado.</p>
-    <p>Outra vantagem é usar o git e incorporar ao Lazarus os patches ou trocar de versão.
-       Se estiver interessado, siga as instruções abaixo, embora sejam para o Windows, o mesmo princípio 
-       serve para Linux,só mudam os nomes dos comandos e pastas.</p>
+    assim como no fpcupdeluge. Porém essa terceira via é mais econômica e rápida do que usando 
+    o fpcupdelge orque usaremos o FreePascal(FPC daqui em diante) pré-instalado.</p>
+    <p>Como o Lazarus está num repositório GIT, temos outra vantagem com relação a aplicação de 
+       atualização de versão. Siga as instruções abaixo, embora sejam para o Windows, os princípios 
+       são os mesmos para Linux.</p>
     <ol>
     <li>
-        <p>Instale o compilador FreePascal a partir do instalador oficial, se estiver usando 
-        Linux use a versão disponível no seu repositório, seja apt ou dnf. 
-        Para o Windows, o instalador pode ser obtido em:<br>
+        <p>Instale o FPC a partir do instalador oficial:<br>
         <a href="https://www.freepascal.org/download.html">https://www.freepascal.org/download.html</a></p>
         <p>Escolha a versão apropriada para seu sistema, a mais compativel será “Intel x86/i386->Windows 32-bit”, 
             mas também poderá usar a versão 64bits indicada abaixo:<br>
-        <img src="img/instalacao_windows_git1.png"></p>
-        <p>A instalação é uma sequência de next->next->finish. Para fins didáticos, vamos supor 
-            que tenhamos instalado em <strong>C:\FPC\3.2.2.</strong></p>    
+            <img src="img/instalacao_windows_git1.png" alt="Download do FPC" width="auto" height="auto">
+        <p>A instalação é uma sequência de <strong>Next->Next->Finish</strong> e não carece de maiores detalhoes.
+            Para fins didáticos, vamos supor daqui em diante que o tenhamos instalado em <strong>C:\FPC\3.2.2.</strong></p>    
     </li>    
-    <li><p>Acrescente a variavel de ambiente chamada <strong>PATH</strong> o caminho de instalação do FreePascal:</p>
-        <p><img src="img/instalacao_windows_git3.png"></p>
+    <li><p>Acrescente à variavel de ambiente chamada <strong>PATH</strong> o caminho de instalação do FPC:</p>
+        <p><img src="img/instalacao_windows_git3.png" alt="FPC no PATH do ambiente" width="auto" height="auto"></p>
     </li>    
     <li>
-        <p>Precisará baixar o código fonte do compilador FreePascal, você poderá obtê-lo em:<br>
+        <p>Precisará baixar o código fonte do FPC, você poderá obtê-lo em:<br>
         <a href="https://www.freepascal.org/down/source/sources.html">https://www.freepascal.org/down/source/sources.html</a></p>
-        <p>Eles normalmente estão compactados e com o sufixo “source” no nome, como pode ver na imagem a seguir:<br>
-            <img src="img/instalacao_windows_git2.png">
+        <p>O código fonte normalmente está compactado e com o sufixo “source” no nome, como pode ver na imagem a seguir:<br>
+            <img src="img/instalacao_windows_git2.png" alt="Download do código fonte do FPC" width="auto" height="auto">
         </p>    
-        <p>Baixe e então descompacte-o na pasta onde o FPC foi instalado, em nosso exemplo: 
+        <p>Então baixe-o, depois descompacte-o na pasta onde o FPC foi instalado, em nosso exemplo: 
             <strong>c:\FPC\3.2.2</strong> e então uma subpasta com o código fonte será criada e depois
             ficará assim: <strong>C:\FPC\3.2.2\subpasta</strong>, renomeie o nome da <strong>subpasta</strong> 
-            para ‘source’ para ser mais informativo e anote este caminho, por exemplo, 
+            para <strong>sources</strong> para ser mais informativo e então anote este caminho -
             <strong>C:\FPC\3.2.2\sources</strong>. Iremos precisar lembrar deste path mais adiante.
         </p>
     </li>
@@ -52,8 +50,8 @@
     <li><p>Abra o cmd.exe ou o terminal.<br>
         Se tiver o Delphi instalado, recomendo que execute:</p>
         <pre>set path=C:\FPC\3.2.2\bin\i386-win32;%PATH%</pre>
-        <p>Este comando servirá para que os comando do freepascal tenham preferencia aos
-             utilitários de Delphi que possuem o mesmo nome</p>
+        <p>Este comando servirá para que os utilitários do FPC tenham preferencia aos utilitários do
+        Delphi que possuem o mesmo nome.</p>
     </li>
     <li><p>Vamos criar a pasta que receberá os arquivos do Lazarus:</p>
 <pre>mkdir c:\lazarus
@@ -79,32 +77,33 @@ remotes/origin/fixes_2_0
 remotes/origin/fixes_2_2
 (...)    
 </textarea>
-    <p>E então escolha uma versão específica das que foram listadas, se for a 2.2, escolha
+    <p>E então escolha um branch das que foram listadas, se for a 2.2, escolha
         <strong>fixes_2_2</strong> que incluirá a 2.2.x mais os fixes, isto é, as correções 
-        da série 2.2. Mas se desejar uma versão que já está saindo do forno, volte o passo anterior 
+        da série 2.2. Mas se desejar uma versão que já está saindo do forno, volte ao passo anterior 
         e renomeie o diretório de <strong>c:\lazarus\lazarus22</strong> para outro nome 
-        mais conveniente com a versão escolhida. Para prosseguir com o nosso exemplo:</p>
+        mais conveniente com a versão escolhida. Para prosseguir com o nosso exemplo usando 
+        <strong>fixes_2_2</strong>:</p>
         <pre>git switch  fixes_2_2</pre>
     </li> 
     <li><p>Vamos compilar, ainda no cmd.exe execute:</p>
 <pre>make clean 
 make bigide
-</pre>>
-    <p>Vai demorar um pouco, relaxe e vá tomar com café.</p>
+</pre>
+    <p>Vai demorar um pouco, relaxe e vá tomar com café enquanto isso.</p>
     </li>   
     <li><p>A compilação gerará <strong>c:\lazarus\lazarus22\lazarus.exe</strong>, crie um atalho para ele 
         em sua área de trabalho, mas faça-o com os seguintes parâmetros:</p>
         <pre>C:\lazarus\lazarus22\lazarus.exe --pcp=<strong>C:\lazarus\lazarus22\configs</strong></pre>        
-        Onde <strong>C:\lazarus\lazarus22\configs</strong> é a pasta que o lazarus armazenará suas cnofiguraçoes. 
-        Mais tarde seresolvermos ter mais uma versão do Lazarus, a configuração de um poderá ser diferente do outro.</p>
+        Onde <strong>C:\lazarus\lazarus22\configs</strong> é a pasta que o lazarus armazenará suas configurações. 
+        Mais tarde se decidirmos ter mais uma versão do Lazarus, a configuração de um não influenciará o outro.</p>
         <p><strong>ALERTA:</strong> Esteja atento a nunca usar a pasta de configuração para versões diferentes de Lazarus.
         </p>
     </li>
     <li>Execute o lazarus pela primeira vez, mas faça isso por meio do atalho recém criado com o
          parâmetro<strong>c:\lazarus\lazarus22</strong>.</li>
-    <li><p>Quando a IDE iniciar-se irá aparecer uma busca automática pelo código fonte do Free Pascal. 
-        Visto que ele não encontrará os fontes - isso é raro - então deverá clicar em “Parar” e 
-        indicar o local onde o código fonte do FPC foi descompactado, 
+    <li><p>Quando a IDE iniciar-se, geralmente a primeira tela será uma busca automática pelo código fonte do FPC.<br> 
+        No ambiente Windows é raro encontrar a localização dos fontes sozinho então devemos clicar em “Parar” e a  
+        procura será interrompida e daí então indicar o local onde o código fonte do FPC foi descompactado, 
         a saber <strong>C:\FPC\3.2.2\sources:</strong></p>
         <img src="img/instalacao_windows_git4.png">
         <p>E então clicar em Iniciar IDE. </p>
@@ -112,7 +111,7 @@ make bigide
     </ol>
     <p>As instruções acima foram inspiradas na página:<br>
     <a href="https://wiki.lazarus.freepascal.org/Getting_Lazarus">https://wiki.lazarus.freepascal.org/Getting_Lazarus</a></p>
-    <p>Se algo sair diferente do esperado, acesse o link acima, talvez ele esclareça o que deu errado.</p>
+    <p>Se algo sair diferente do esperado, acesse o link acima, talvez ele esclareça o que deu de errado.</p>
 
 </body>
 </html>
