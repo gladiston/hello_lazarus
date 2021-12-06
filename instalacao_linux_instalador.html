@@ -9,20 +9,19 @@
 <body>
     <h1>Instalação no Linux: Instalação a partir dos repositórios</h1>
     <hr>
-    <p>A instalação a partir dos repositórios é recomendada apenas ao FreePascal(FPC), porque o Lazarus 
-        precisa de uma instalação será homeuser, caso contrário você teria de dar permissões a 
-        arquivos que o instalador do pacotes agregar e isso complica muito desnecessariamente.</p>
-    <p>Nesta instalação, instalaremos o usaremos 
-        o fpcupdeluge para instalar o FPC dos repositórios, porém o Lazarus no HOME do usuário. Primeiro vamos instalar alguns 
-        pacotes essenciais:</p>
+    <p>A instalação a partir dos repositórios é recomendada apenas ao FreePascal(FPC daqui em diante), 
+        porque o Lazarus precisa de uma instalação homeuser, do contrário você teria de alterar permissões em 
+        pastas de sistemas onde não é seguro mexer.</p>
+    <p>Nesta instalação, usaremos o FPC dos repositórios, porém o Lazarus será instalado pelo fpcupdeluge.
+        Primeiro vamos instalar alguns  pacotes essenciais:</p>
      <pre>
      sudo dnf install make automake gcc gcc-c++ kernel-devel
      sudo dnf groupinstall "Development Tools" "Development Libraries"
-     sudo dnf install gdb zip unzip gdb subversion binutils libX11-devel gtk2-devel gdk-pixbuf2-xlib
+     sudo dnf install gdb zip unzip subversion binutils libX11-devel gtk2-devel gdk-pixbuf2-xlib
      sudo dnf install cairo cairo-devel cairomm-devel 
      sudo dnf install pango pango-devel pangomm pangomm-devel
      </pre>
-     <p>Se planeja compilar o FPC separadamente, então inclua:</p>
+     <p>O código fonte do FPC também será requerido, então execute:</p>
      <pre>
      sudo dnf install fpc fpc-src qt5pas-devel
      </pre>
@@ -31,6 +30,9 @@
      <ol>
         <li><a href="instalacao_linux_fpcupdeluge.html">Instalação no Linux: Usando fpcupdeluge</a></li>
         <li><a href="instalacao_linux_git.html">Instalação no Linux: Usando GIT</a></li>       
-     </ol>         
+     </ol>
+     <p>Se decidir usar o fpcupdeluge, esteja atento em personalizar a instalação indo na opção 
+         <strong>Setup+</strong> e ligando a opção <strong>Use system FPC for Lazarus:</strong></p>         
+         <p><img src="img/instalacao_linux_instalador1.png" alt="Download do código fonte do FPC" width="auto" height="auto"></p>
 </body>
 </html>
