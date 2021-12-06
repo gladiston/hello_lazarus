@@ -24,15 +24,13 @@
     <p>A versão 64bits também compila para 32bits, então porque sugerir a versão 32bits? A resposta reside 
         que os componentes como o Zeos que fazem acesso a banco de dados usam uma DLL que chamamos de 
         <strong>cliente de banco de dados</strong> e essa deve ser 32 ou 64bits de acordo com o aplicativo 
-        que irá consumi-la. Resumidamente: <strong>se o Lazarus é 64bits então a DLL cliente também deve ser 64bits</strong>
-        e não apenas a DLL de banco de dados, mas outros componentes que também façam uso de DLL em tempo de 
-        design tem a mesma regra. Então acaba sendo mais fácil no ambiente Windows obter e consumir DLLs em 32bits.</p>
+        que irá consumi-la. Resumidamente: <strong>se o Lazarus é 64bits então a DLL cliente também deve ser 64bits</strong>.<br>
+        Outros componentes que também façam uso de DLL em tempo de design tem a mesma regra. 
+        Então acaba sendo mais fácil no ambiente Windows obter e consumir DLLs em 32bits.</p>
         <p>Você não esta impedindo de usar a versão 64bits da IDE, mas se o fizer lembre-se sempre de que
-        a programação em tempo de design ou runtime usando a IDE 64bits exigirá sempre 
-        que se use DLLs também 64bits no sistema, geralmente no mesmo diretório do aplicativo ou
-        no PATH do sistema.</p>
+        a IDE em tempo de design exigirá que consuma DLLs da mesma plataforma, isto é, 64bits.</p>
         <p>Na distribuição de nossa aplicação, a nossa IDE ser 64bits ou 32bits não tem importância, o importante é que aplicativo.exe
-        vai consumir DLLs da mesma arquitetura seja 32 ou 64bits.</p>
+        vai consumir DLLs da mesma plataforma seja 32 ou 64bits.</p>
     <p>Mais tarde, notará que em se tratando de Windows e aplicações comerciais, é melhor trabalhar com
         32bits porque uma aplicação assim roda em qualquer Windows. Um aplicativo integralmente 64bits exigiria
         esforço em distribuir duas versões do mesmo programa sem nenhum ganho adicional para quem o recebe
