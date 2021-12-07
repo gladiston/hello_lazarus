@@ -9,18 +9,17 @@
 <body>
     <h1>Correção do pacote SPARTA(descontinuado)<</h1>
     <hr>
-    <p>O pacote sparta é um componente neecssário para docar o formulário na área de editor de código.</p>
-    <p>O pacote sparta foi descontinuado em versões recentes. Mas se por alguma razão você ainda precisar utilizá-lo
-        saiba que é necessário uma intervenção no código pois o mesmo tem um bug que impedirá a instalação/compilação
-        de alguns pacotes, então temos que corrigir a situação.</p>
+    <p>O pacote sparta é um pacote necessário para docar o editor de código e formulário numa única area de trabalho.</p>
+    <p>O pacote sparta foi descontinuado a partir da versão 2.2, mas se ainda precisa utilizá-lo, saiba que é possivel
+    desde que corrija um bug que impede a sua instalação/compilação.</p>
     <p>Primeiro você deve determinar onde o seu lazarus está instalado, pois você precisará corrigir diretamente os 
-        fontes desse pacote. No Lazarus, vá em Package|Open Package(.lpk) e abra os seguintes pacotes:</p>
-<textarea rows=2 cols=80 disabled>
-<dir_instalação>/components/sparta/mdi/sparta_mdi.lpk
-<dir_instalação>/components/sparta/toolsapi/sparta_toolsapi.lpk
+        fontes desse pacote. No Lazarus, vá em <strong>Package|Open Package(.lpk)</strong> e abra os seguintes pacotes:</p>
+<textarea rows=3 cols=80 disabled>
+[dir_instalação]/components/sparta/mdi/sparta_mdi.lpk
+[dir_instalação]/components/sparta/toolsapi/sparta_toolsapi.lpk
 </textarea>
- <p>Depois procure pelo Required Packages(pacotes requeridos) e remova deles o <strong>sparta_generics</strong>:</p>
- <p><img src="img/lazarus_sparta1.png"></p>
+ <p>Depois procure a seção <strong>Required Packages(pacotes requeridos)</strong> e remova deles a referencia <strong>sparta_Generics</strong>:</p>
+ <p><img src="img/lazarus_sparta1.png" alt="Pacote Sparta" width="auto" height="auto"></p> 
  <strong>ALERTA:</strong> Essa é uma alteração necessária apenas para o Lazarus 2.0.12, não serve para as versões posteriores onde tal pacote foi substituído pelo dockedformeditor.
     
 </body>
