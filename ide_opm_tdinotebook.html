@@ -9,10 +9,34 @@
 <body>
     <h1>Instalação de Pacotes via OPM: TDINotebook</h1>
     <hr>
-    <p>Um jeito diferente de ao invés de abrir janelas modais, abri-las embutindo-as em Tabs, método conhecido
-    como TDI também similar aos programas “mobile” onde utiliza-se a mesma área ao chamar todas as janelas subsequentes.</p>
+    <p>Um jeito diferente de ao invés de abrir janelas modais(SDI) ou multiplos documentos(MDI) é 
+    abrir usando tabs, método conhecido como TDI. A Interface TDI geralmente é usada de dois modos:
+    (1) com varias tabs, similar ao Google Chrome ou Firefox onde cada tab representa uma janela diferente
+    e independente  e o TDINotebook já vem pronto para usar de modo, para quem estava acostumado 
+    com a interface MDI talvez este método seja o mais aproximado ou (2) manter uma unica tab com a 
+    "orelhinha" invisivel e fazer forms serem embutidos dentro delas e então com as "orelhinhas" invisiveis
+    podemos trocar de tab onde cada uma delas (ou apenas uma) terá seu próprio form.</p>
+    <p>O efeito visual é semelhante a este:</p>
+    <video width="1024px" height="auto" controls>
+        <source src="assets/exemplo_tdi.webm" type='video/webm; codecs="vp8, vorbis"'>
+        Seu navegador não suporta webm ou a tab video.
+    </video>
+    <p>Repare que o aplicativo esta sempre se aproveitando da janela principal ao inves de criar uma nova
+    janela sobre esta.</p>
+    <p>Você pode usar método similar a opção #2 através da criação de um form dentro de um panel ou PageControl, 
+    mas se o fizer deverá lembrar-se também de destruí-lo  manualmente e é aí que o TDINotebook ajuda, 
+    pois ao fechar uma tab o que estiver dentro dela(um form) será destruido também. Também haverá menos
+    código quando precisar retornar a uma janela anterior.</p>
+    <p>Inclusive os aplicativos mobile usam este conceito de tabs, mas nenhum aplicativo se parece com 
+    o Google Chrome ou Firefox porque apenas uma única tab fica visivel e a mesma é chaveada entre os 
+    forms, mostrando apenas um form por vez.
+    </p>
+    <p>Se você gostou dessa abordagem então instale este componente.</p>
     <p>Maiores informações em:<br>
     <a href="https://wiki.freepascal.org/TTDINotebook">TTDINotebook - Lazarus wiki (freepascal.org)</a></p>
-    <p>Todo: Escrever um exemplo usando-o</p>    
+    <p>Escrevi uma demo onde você poderá ver na prática a simpicidade de criar programas dessa forma:</p>
+    <a href="https://github.com/gladiston/demo_tdinotebook">Demo usando TTDINotebook</a></p>
+    
+    
 </body>
 </html>
