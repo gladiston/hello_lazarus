@@ -36,7 +36,48 @@
     <a href="https://wiki.freepascal.org/TTDINotebook">TTDINotebook - Lazarus wiki (freepascal.org)</a></p>
     <p>Escrevi uma demo onde você poderá ver na prática a simpicidade de criar programas dessa forma:</p>
     <a href="https://github.com/gladiston/demo_tdinotebook">Demo usando TTDINotebook</a></p>
-    
-    
+    <p>Basicamente, você inclui o componente TDINotebook na sua janela principal e para o aplicativo não
+    ter a cara de navegador Gooogle Chrome ou Firefox, você inclui essas linhas no OnCreate do seu form principal:</p>
+    <p><textarea rows=19 cols=100 disabled>
+// nboHidePageListPopup: Não tem popup para mostrar as tabs(paginas)
+// nboShowAddTabButton: Não mostra opção para adicionar nova tab
+// nboShowCloseButtons: Botões de fechar não serão exibidos
+TDINoteBook1.Options:=[nboHidePageListPopup, nboShowAddTabButton, nboShowCloseButtons];
+// Não mostra a orelhinha das tabs
+TDINoteBook1.ShowTabs:=false;
+// Como se trata de um aplicativo comercial e não um navegador então é melhor esconder outros botões
+TDINoteBook1.TDIActions.CloseAllTabs.Visible:=false;
+TDINoteBook1.TDIActions.CloseTab.Visible:=false;
+TDINoteBook1.TDIActions.NextTab.Visible:=false;
+TDINoteBook1.TDIActions.PreviousTab.Visible:=false;
+TDINoteBook1.TDIActions.TabsMenu.Visible:=false;
+// deixa ao menos 1 tab para servir de container de outros forms
+if TDINoteBook1.PageCount<1 then
+    TDINoteBook1.AddTabSheet;
+// A primeira tab nunca poderá ser fechada
+// Isso garante que sempre terá uma tab
+TDINoteBook1.FixedPages:=0;           
+    </textarea></p>
+    <p>Nos eventos em que pretende chamar uma janela, você tem que conferir se a mesma já não foi criada 
+    e se positivamente não apenas mostrar, caso contrário, crie e mostre. Vamos ao código:</p>
+<p><textarea rows=17 cols=100 disabled>
+procedure TForm1.actClientesExecute(Sender: TObject);
+var
+    i:Integer;
+begin
+    i:=TDINoteBook1.FindFormInPages(fmClientes);
+    if i<0 then  // não existe, então cria
+    begin
+      fmClientes:=TfmClientes.Create(Self);
+      TDINoteBook1.ShowFormInPage(fmClientes, 0);
+    end
+    else
+    begin
+      // se existe, então é apenas embutir na tab 0
+      TDINoteBook1.ShowFormInPage(fmClientes, 0);
+    end;
+end;  
+</textarea></p>   
+<p>O codigo acima é para ser didático, você que é experiente cortará metade dessas linhas.</p>
 </body>
 </html>
