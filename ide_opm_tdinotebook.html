@@ -75,10 +75,7 @@ var
 begin
   i:=TDINoteBook1.FindFormInPages(fmClientes);
   if i<0 then
-  begin
     fmClientes:=TfmClientes.Create(Self);
-    i:=TDINoteBook1.FindFormInPages(fmClientes);
-  end;
   TDINoteBook1.ShowFormInPage(fmClientes, i); 
 </textarea></p>   
 <p>O codigo acima é para ser didático, você pode acrescentar muito mais. 
