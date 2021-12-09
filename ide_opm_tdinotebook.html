@@ -38,7 +38,7 @@
     <a href="https://github.com/gladiston/demo_tdinotebook">Demo usando TTDINotebook</a></p>
     <p>Basicamente, você inclui o componente TDINotebook na sua janela principal e para o aplicativo não
     ter a cara de navegador Gooogle Chrome ou Firefox, você inclui essas linhas no OnCreate do seu form principal:</p>
-    <p><textarea rows=25 cols=100 disabled>
+    <p><textarea rows=27 cols=100 disabled>
   // Ele cobrirá a área inteira
   TDINoteBook1.Align:=alClient;
   // Se as suas janelas tiver um botão de fechar ou sair então é bom
@@ -63,6 +63,8 @@
   // A primeira tab nunca poderá ser fechada
   // Isso garante que sempre terá uma tab
   TDINoteBook1.FixedPages:=0;              
+  // Um TDINotebook não funciona sem um MainMenu para associar. Isso é estranho, mas tenho que aceitar.
+  TDINoteBook1.MainMenu:=MainMenu1;
     </textarea></p>
     <p>Nos eventos em que pretende chamar uma janela, você tem que conferir se a mesma já não foi criada 
     e se positivamente não apenas mostrar, caso contrário, crie e mostre. Vamos ao código:</p>
