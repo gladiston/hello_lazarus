@@ -39,16 +39,26 @@
     <p>Basicamente, você inclui o componente TDINotebook na sua janela principal e para o aplicativo não
     ter a cara de navegador Gooogle Chrome ou Firefox, você inclui essas linhas no OnCreate do seu form principal:</p>
     <p><textarea rows=29 cols=100 disabled>
-  // Ele cobrirá a área inteira
+  // Um TDINotebook não funciona sem um MainMenu para associar.
+  // Isso é estranho, mas tenho que aceitar. A instrução abaixo
+  // é inóqua, você tem de fazer a associação abaixo em tempo
+  // de design
+  TDINoteBook1.MainMenu:=MainMenu1;
+  // TDINoteook cobrirá a área inteira, remova os comentários para
+  // deixar sua aplicação não ter a cara de navegador de google chrome
+  // caso contrário, ao deixá-las ficará pratico, mas com cara de google chrome
   TDINoteBook1.Align:=alClient;
   // Se as suas janelas tiver um botão de fechar ou sair então é bom
-  // esconder o botão de fechar "X" na tab
-  //TDINoteBook1.CloseTabButtom:=tbNone;
+  // esconder o botão de fechar "X" na tab com tbNone, caso contrário
+  // use tbMenu ou tbButtom para representar uma opção ed fechamento
+  //TDINoteBook1.CloseTabButtom:=tbButtom;   // tbNone, tbMenu, tbButtom
   // nboHidePageListPopup: Não tem popup para mostrar as tabs(paginas)
+  //TDINoteBook1.Options:=TDINoteBook1.Options+[nboHidePageListPopup];
   // nboShowAddTabButton: Não mostra opção para adicionar nova tab
+  //TDINoteBook1.Options:=TDINoteBook1.Options+[nboShowAddTabButton];
   // nboShowCloseButtons: Botões de fechar não serão exibidos
-  TDINoteBook1.Options:=[nboHidePageListPopup, nboShowAddTabButton, nboShowCloseButtons];
-  // Não mostra a orelhinha das tabs
+  //TDINoteBook1.Options:=TDINoteBook1.Options+[nboShowCloseButtons];
+  // Mostra ou não as orelhinha nas tabs
   TDINoteBook1.ShowTabs:=false;
   // Como se trata de um aplicativo comercial e não um navegador então
   // é melhor esconder outros botões
@@ -56,38 +66,20 @@
   TDINoteBook1.TDIActions.CloseTab.Visible:=false;
   TDINoteBook1.TDIActions.NextTab.Visible:=false;
   TDINoteBook1.TDIActions.PreviousTab.Visible:=false;
-  TDINoteBook1.TDIActions.TabsMenu.Visible:=false;
-  // deixa ao menos 1 tab para servir de container de outros forms
-  if TDINoteBook1.PageCount<1 then
-    TDINoteBook1.AddTabSheet;
-  // A primeira tab nunca poderá ser fechada
-  // Isso garante que sempre terá uma tab
-  TDINoteBook1.FixedPages:=0;              
-  // Um TDINotebook não funciona sem um MainMenu para associar.
-  // Isso é estranho, mas tenho que aceitar. A instrução abaixo
-  // é inóqua, você tem de fazer a associação abaixo em tempo
-  // de design   
-</textarea></p>
-    <p>Nos eventos em que pretende chamar uma janela, você tem que conferir se a mesma já não foi criada 
-    e se positivamente não apenas mostrar, caso contrário, crie e mostre. Vamos ao código:</p>
-<p><textarea rows=17 cols=100 disabled>
+  TDINoteBook1.TDIActions.TabsMenu.Visible:=false; 
+<p><textarea rows=19 cols=100 disabled>
 procedure TForm1.actClientesExecute(Sender: TObject);
 var
-    i:Integer;
+  i:Integer;
 begin
+  i:=TDINoteBook1.FindFormInPages(fmClientes);
+  if i<0 then
+  begin
+    fmClientes:=TfmClientes.Create(Self);
     i:=TDINoteBook1.FindFormInPages(fmClientes);
-    if i<0 then  // não existe, então cria
-    begin
-      fmClientes:=TfmClientes.Create(Self);
-      TDINoteBook1.ShowFormInPage(fmClientes, 0);
-    end
-    else
-    begin
-      // se existe, então é apenas embutir na tab 0
-      TDINoteBook1.ShowFormInPage(fmClientes, 0);
-    end;
-end;  
+  end;
+  TDINoteBook1.ShowFormInPage(fmClientes, i); 
 </textarea></p>   
-<p>O codigo acima é para ser didático, você que é experiente cortará metade dessas linhas.</p>
+<p>O codigo acima é para ser didático, você pode acrescentar muito mais.</p>
 </body>
 </html>
