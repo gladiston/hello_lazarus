@@ -78,28 +78,6 @@ begin
     fmClientes:=TfmClientes.Create(Self);
   TDINoteBook1.ShowFormInPage(fmClientes, i); 
 </textarea></p>   
-<p>O codigo acima é para ser didático, você pode acrescentar muito mais. 
-    Por exemplo, você pode carregar uma imagem no fundo do TDINotebook:
-<p><textarea rows=3 cols=100 disabled>
-TDINoteBook1.BackgroundImage:=TImage.Create(nil); 
-TDINoteBook1.BackgroundImage.Picture.LoadFromFile('background.jpg');  
-</textarea></p>  
-<p>E depois carregar as janelas seguintes com transparencia (alfa blending), 
-    isso certamente causaria um efeito muito interessante:</p>
-<p><textarea rows=14 cols=100 disabled>
-procedure TForm1.actClientesExecute(Sender: TObject);
-var
-  i:Integer;
-begin
-  i:=TDINoteBook1.FindFormInPages(fmClientes);
-  if i<0 then
-  begin
-    fmClientes:=TfmClientes.Create(Self);
-    fmClientes.AlphaBlend:=true;
-    fmClientes.AlphaBlendValue:=200;
-    i:=TDINoteBook1.FindFormInPages(fmClientes);
-  end;
-  TDINoteBook1.ShowFormInPage(fmClientes, i); 
-</textarea></p>  
+    <p>O codigo acima é para ser didático, você pode acrescentar muito mais. </p>
 </body>
 </html>
