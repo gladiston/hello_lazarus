@@ -28,7 +28,7 @@
             <pre>rpm -ql fpc-src.noarch</pre>
             E notará que foram instalados em <strong>/usr/share/fpcsrc</strong>, anote este caminho porque precisaremos dele mais tarde.
         </li>
-        <li>Apague a pasta <b>~/.lazarus</b> se existir:<br>
+        <li>Apague a pasta <strong>~/.lazarus</strong> se existir:<br>
         <pre>rm -fR ~/.lazarus</pre></li>
         <li>Ainda no terminal, indique onde deseja que o lazarus seja baixado, por exemplo, 
             se desejar diretamente na raiz de sua $HOME então:
@@ -68,12 +68,17 @@ cd lazarus22/</pre>
 make bigide</pre> 
         (demora um pouco, mas vai compilar tudo)     
        </li> 
-       <li>Anote onde o Lazarus foi instalado, a saber, <b>~/lazarus/lazarus22</b> e depois 
+       <li>Anote onde o Lazarus foi instalado, a saber, <strong>~/lazarus/lazarus22</strong> e depois 
         crie um link simbolico para ele:
         <pre>sudo ln -s ~/lazarus/lazarus22/lazarus /usr/bin/lazarus22</pre>
         Usamos o nome <strong>lazarus22</strong> apenas para indicar que se trata do Lazarus 2.2. Use 
-        este nome para executar o <b>lazarus</b> pelo terminal.
+        este nome para executar o <strong>lazarus</strong> pelo terminal.
        </li>
+       <li>Copie o icone do Lazarus que esta em <strong>~/lazarus/lazarus22/images/icons/lazarus.ico</strong> para:<br> 
+        /usr/share/icons<br>
+        <pre>sudo cp ~/lazarus/lazarus22/images/icons/lazarus.svg /usr/share/icons/</pre>
+        Usaremos este ícone na fase seguinte, a criação do atalho.
+       </li>       
        <li>Crie um atalho para ele em sua área de trabalho:
         <pre>gedit ~/.local/share/applications/lazarus.desktop</pre>
         <p>e então cole as instruções abaixo:</p>
@@ -85,7 +90,7 @@ Terminal=false
 Name=Lazarus 2.2
 Exec=lazarus22 --pcp=~/lazarus/lazarus22/configs
 Comment=Lazarus 2.2+fixes
-Icon=~/lazarus/lazarus22/images/icons/lazarus.ico 
+Icon=/usr/share/icons/lazarus.svg 
 Category=Application;IDE;Development;GUIDesigner;Programming;
 Categories=Application;IDE;Development;GUIDesigner;Programming;
 Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;            
@@ -104,13 +109,13 @@ Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;
     </ol>
     <p>Eventualmente você poderá querer baixar novas versões ou atualizações,
         trata-se dum repositório git então não haverá problemas, sempre que precisar recorra aos comandos:</p>
-<pre>git switch <b>main</b>
+<pre>git switch <strong>main</strong>
 git pull  </pre>
-    <p>Onde <b>main</b> é o branch atual, mas você pode trocá-lo se preferir e então repita 
+    <p>Onde <strong>main</strong> é o branch atual, mas você pode trocá-lo se preferir e então repita 
      os procedimentos anteriores que culminarão no ‘make big ide' mencionado nos passos anteriores.</p>
     <p>Geralmente, as correções do Lazarus estarão listadas com o nome de branchs como prefixo‘fixes’,
         então será fácil identificar atualizações.</p>
-    <p><b>TODO</b>: Adicionar opções para crosscompiling, da forma como esta acima, os projetos serão 
+    <p><strong>TODO</strong>: Adicionar opções para crosscompiling, da forma como esta acima, os projetos serão 
      compilados apenas para o ambiente do host, isto é, se estiver num amd64 apenas compilará para 64bits.</p>        
 </body>
 </html>
