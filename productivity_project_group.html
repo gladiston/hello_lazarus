@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtividade: Usando grupo de projetos</title>
+</head>
+<body>
+    <h1>Produtividade: Usando grupo de projetos</h1>
+    <hr>
+    <p>Por padrão o Lazarus-IDE abre apenas um projeto por vez, e isso nem sempre é bacana. 
+    Em alguns ambientes é conveniente ter todos os projetos num grupo e editar/compilar o que 
+    for mais conveniente. Por exemplo, abrir todos os projetos de um grupo, e 
+    compilar todos eles num único movimento, ao invés de compilar um de cada vez.</p>
+    <p>Há um recomendação pessoal, use o gerenciador de projetos apenas a partir da versão 2.2,
+    eu tive alguns embaraços no Lazarus 2.0.13 e acho que o project manager não tá legal
+    nesta versão, mas no Lazarus 2.2 está funcionando muito bem e substitui com vantagens
+    o Project inspector.</p>
+    <p>Se você também pensa então instale o Project Manager seguindo <a href="pacote_project_manager.html">estas instruções</a></p>
+    <p>Depois de instalado vá em <strong>Tools|Options|Enviroment|Project Grops</strong> e
+     ligue as opções <strong>Open last group on start</strong>e também 
+     <strong>Compile and build compile target</strong>:</p>
+    <p><img src="assets/productivity_project_group1.png" alt="Configuração do Gerenciador de Projetos" width="auto" height="auto"></p>         
+    <p>Depois vá em <strong>Project|New project group</strong> para criar um novo grupo ou
+    então <strong>Project|Open project group</strong> para abrir um grupo existente. 
+    Você pode docá-lo num painel lateral  caso queira deixá-lo permanente.</p>
+    <p><img src="assets/productivity_project_group2.png" 
+        alt="Gerenciador de Projetos docado na lateral" 
+        width="920" height="auto"></p>
+    <p>Por mais que eu queria explicar, o Project Group não é tão diferente do Project Inspector, 
+        a diferença reside em poder limpar, compilar(com seus diferentes Build Modes) ao invés
+        de apenas um project, realizar esta operação em vários projetos.</p>
+    <p>Ao tocar no nome do grupo de projetos, você perceberá duas opções ficam habilitadas
+        <strong>"Compile"</strong> e <strong>"Complete clean"</strong>:</p>
+    <p><img src="assets/productivity_project_group3.png" 
+        alt=""Compile e Complete clean" 
+        width="auto" height="auto"></p> 
+    <p>Estas opções lhe permirão respectivamente compilar todos os projetos do grupo 
+        ou limpar o lixo de compilação deles.</p>   
+    <p>Ao compilar todos os projetos do grupo, o project manager repete o ultimo 
+        build mode do projeto, ele não dá a opção de trocar o Build mode para todos os
+        projetos e essa é uma opção que o diferencia do <strong>Project Manager do Delphi</strong>.
+        Se vocÊ precisa que o Build mode seja modificado terá que ir em <strong>
+        Project|Project Options</strong> ou um clique com o mouse sobre o projeto e 
+        então escolher <strong>Properties</strong>, ambas levam ao mesmo lugar:
+        <p><img src="assets/productivity_project_group4.png" 
+            alt="Propriedades do Projeto(Project Options)" 
+            width="auto" height="auto"></p>         
+    </p>
+    <p><strong>O Project group</strong> é uma opção bem vinda para programadores que a 
+    todo instante tem de trocar de projetos. Mas por ora, ao não oferecer troca rápida 
+    de "Build mode" para o grupo, sua vantagem é somente esta.</p>
+</body>
+</html>
