@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtividade: Salvando configuração para a posteridade</title>
+    <title>Produtividade: Salvando configuração da IDE para reuso</title>
 </head>
 <body>
-    <h1>Produtividade: Salvando configuração para a posteridade</h1><hr>
-    <p>Com o passar do tempo, podemos querer instalar o Lazarus novamente, daí temos que repetir 
-    novamente toda essa configuração. É útil saber que todas as configurações que fizemos até 
-    aqui estão em arquivos .xml que estão na pasta:</p>
+    <h1>Produtividade: Salvando configuração da IDE para reuso</h1><hr>
+    <p>A IDE do Lazarus guarda toda a sua configuração numa pasta específica que pode ser manipulada 
+        com diversos fins, mas geralmente como backup. Essa pasta guarda ajustes de nossa IDE que
+        geralmente fazemos depois da instalação, mas guarda também templates criados, os 
+        aplicativos acrescentados em <strong>Tools</strong> e muito mais.</p>
+    <p>Embora seja muito bom fazer ajustes finos na configuração, precisamos ser práticos e não perder
+        tempo repetindo as mesmas configurações por qualquer que seja o motivo, por isso é útil
+        saber como salvar e reaproveitar as configurações da IDE do Lazarus feitas anteriormente.<br>
+        A localização da pasta de configuração pode variar de lugar, mas o padrão costuma ser:</p>
     <p>No Windows:</p>
     <textarea rows=1 cols=100 disabled>%USERPROFILE%\AppData\Local\Lazarus</textarea>
     <p>No Linux a pasta pode variar de lugar conforme o método de instalação que usou:</p>
@@ -18,13 +23,25 @@
 Instalação via repositório da distro:  $HOME/.lazarus
 Instalação via GIT: $HOME/.lazarus
 Compilação via FPCUpDeluge: $HOME/fpcupdeluxe/config_lazarus/
-</textarea>    
-    <p>Por isso é uma boa prática quando terminamos algumas configurações/ajustes e gostaríamos de
-     mantê-la para a posteridade salvá-la num formato .zip ou em outro qualquer. Geralmente eu a
-     mantenho compactada e guardo o zip noutro local. Quando for preciso basta descompactar no mesmo
-     diretório e as configurações e ajuste que fizemos retornam ao que era no backup. Também lhe
-     será útil quando instalar noutro computador.</p>
-    <p>Além das configurações, a pasta acima também guarda outras coisas como templates criados, 
-    aplicativos acrescentados em <strong>Tools</strong> e muito mais..</p>
+</textarea>
+<p>Contudo, se você executa o Lazarus com a opção <strong>--pcp=/pasta/do/lazarus/configs</strong>,
+    Então será esta pasta identificada que guarda a configuração. Como pode notar, a IDE do Lazarus
+    é bastante flexivel quanto a localização de sua configuração e é sábio de nossa parte tirar
+    proveito disso, como? Geralmente mantendo mais de uma instalação do mesmo em diferentes pastas
+    ou computadores e usufruindo de configurações compartilhadas. Talvez tendo uma configuração
+    para servir de linha base que sirva para qualquer Lazarus e depois fazer ajustes adicionais
+    para o proposito desejado. Tudo isso ajuda muito a evitar perda de tempo com configurações.</p>    
+    <p>Considero uma boa prática antes de uma serie de configurações/ajustes guardar o backup de
+        nossa configuração salvando a pasta indicada num arquivo .zip e depois de consolidar a
+        configuração então salvá-la outra vez.</p>
+    <p>Se achou um pouco complicado então assista o víde a seguir:</p>
+    
+    <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/wnGIdmtQlMc" 
+        title="Produtividade: Salvando configuração da IDE para reuso<" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>  
+
 </body>
 </html>
