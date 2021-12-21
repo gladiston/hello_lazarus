@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtividade: Column Mode, como usar</title>
+</head>
+<body>
+    <h1>Produtividade: Column Mode, como usar</h1>
+    <hr>
+    <p>Alguns trechos de programas ou conteúdo de arquivos podem apresentar um padrão colunado, 
+        quando isso acontece, temos a chance de usar o <strong>Column Mode</strong>, um modo de 
+    edição presente na maioria das IDEs onde modelos criar, editar ou remover padrões colunados.</p>
+    <p>Observe este padrão:</p>
+    <textarea rows=15 cols=60 disabled>
+21.12.2021	5,7406	5,7417	5,7567	5,7119	-0,03%
+20.12.2021	5,7425	5,7141	5,7457	5,6899	0,81%
+17.12.2021	5,6961	5,6887	5,7167	5,6610	0,14%
+16.12.2021	5,6884	5,6693	5,7256	5,6589	0,14%
+15.12.2021	5,6806	5,6873	5,7364	5,6574	-0,02%
+14.12.2021	5,6815	5,6681	5,6986	5,6179	0,02%
+13.12.2021	5,6804	5,6105	5,6813	5,6012	1,21%
+10.12.2021	5,6127	5,5599	5,6358	5,5580	0,72%
+09.12.2021	5,5727	5,5374	5,5999	5,5175	0,72%
+08.12.2021	5,5327	5,6027	5,6364	5,5256	-1,43%
+07.12.2021	5,6128	5,6890	5,6890	5,6085	-1,34%
+06.12.2021	5,6891	5,6532	5,7029	5,6350	0,64%
+03.12.2021	5,6532	5,6514	5,6864	5,6006	0,12%
+02.12.2021	5,6462	5,6632	5,6790	5,6139	-0,87%</textarea>
+    <p>Este é um tipo de arquivo colunado, damos esse nome porque suas colunas tem tamanho fixo 
+    em todas as linhas do arquivo, nunca avançando sobre outra coluna. Graças a este padrão, 
+    podemos fazer algumas coisas nele como selecionar apenas a parte onde mostra o ano "2021" e
+    excluir apenas este trecho no bloco inteiro:</p>
+    <p><img src="assets/column_mode1.png" alt="Removendo uma coluna inteira do texto marcado" width="auto" height="auto"></p>    
+    <p>No exemplo acima, com toda uma coluna marcada, basta pressionar "DEL" e todo este
+    trecho será removido.</p>
+    <p>Mas o <strong>column mode</strong>  também pode ser usado para criar padrões colunados como o código abaixo:</p>
+    <textarea rows=8 cols=65 disabled>
+var
+  sTitulo:String
+begin
+  sTitulo:=sTitulo+'******************************************';
+  sTitulo:=sTitulo+'*                                        *';
+  sTitulo:=sTitulo+'*                                        *';
+  sTitulo:=sTitulo+'******************************************';  
+</textarea>
+<p>E como fazemos isso?</p>
+<p>Usamos a combinação de tecla <strong>Shift+Alt</strong> e então selecionamos a área em 
+que desejamos atuar e depois começamos a digitar, o que digitamos será espelhado ou replicado
+para as outras que também foram marcadas.</p>
+<p>Pode parecer um pouco estranho de entender com palavras quando isso é dito pela 
+    primeira vez, mas ao observar o vídeo abaixo ficará  mais claro como o
+    <strong>Column Mode</strong> funciona:</p>
+
+
+    <iframe width="560" height="315" 
+      src="https://www.youtube.com/embed/5PGFdVkL3FU" 
+      title="Produtividade: Column Mode, como usar" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>  
+    
+    <p><strong>É muito importante que se lembre disso:</strong> Sob padrões colunados podemos criar,
+     editar ou remover textos ou códigos usando o Column Mode.</p>
+    <p>Todo editor de texto para programação que se preze tem uma opção de <strong>Column Mode</strong>, 
+    pode procurar no seu vscode, vim, emacs, notepad++ e advinha? Claro, no Lazarus também.</p>    
+</body>
+</html>
