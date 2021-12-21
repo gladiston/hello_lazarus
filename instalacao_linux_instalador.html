@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instalação no Linux: Instalação a partir dos repositórios</title>
+    <title>Instalação no Linux: Instalação do FPC a partir dos repositórios</title>
 </head>
 <body>
-    <h1>Instalação no Linux: Instalação a partir dos repositórios</h1>
+    <h1>Instalação no Linux: Instalação do FPC a partir dos repositórios</h1>
     <hr>
-    <p>A instalação a partir dos repositórios é recomendada apenas ao FreePascal(FPC daqui em diante), 
-        porque o Lazarus precisa de uma instalação homeuser, do contrário você teria de alterar permissões em 
-        pastas de sistemas onde não é seguro mexer.</p>
-    <p>Nesta instalação, usaremos o FPC dos repositórios, porém o Lazarus será instalado pelo fpcupdeluge.
-        Primeiro vamos instalar alguns  pacotes essenciais:</p>
+    <p>A instalação a partir dos repositórios é recomendada apenas ao FreePascal(FPC daqui em diante), porque o Lazarus precisa de uma instalação homeuser, do contrário você teria de alterar permissões em pastas de sistemas onde não é seguro mexer.</p>
+    <p>Nesta instalação, usaremos o FPC dos repositórios, porém o Lazarus será instalado pelo fpcupdeluge. Primeiro vamos instalar alguns pacotes essenciais:</p>
      <pre>
-     sudo dnf install make automake gcc gcc-c++ kernel-devel
-     sudo dnf groupinstall "Development Tools" "Development Libraries"
-     sudo dnf install gdb zip unzip subversion binutils libX11-devel gtk2-devel gdk-pixbuf2-xlib
-     sudo dnf install cairo cairo-devel cairomm-devel 
-     sudo dnf install pango pango-devel pangomm pangomm-devel
+sudo dnf install make automake gcc gcc-c++ kernel-devel
+sudo dnf groupinstall "Development Tools" "Development Libraries"
+sudo dnf install gdb zip unzip subversion binutils libX11-devel gtk2-devel gdk-pixbuf2-xlib
+sudo dnf install cairo cairo-devel cairomm-devel
+sudo dnf install pango pango-devel pangomm pangomm-devel
      </pre>
      <p>O código fonte do FPC também será requerido, então execute:</p>
      <pre>
@@ -33,6 +30,7 @@
      </ol>
      <p>Se decidir usar o fpcupdeluge, esteja atento em personalizar a instalação indo na opção 
          <strong>Setup+</strong> e ligando a opção <strong>Use system FPC for Lazarus:</strong></p>         
-         <p><img src="assets/instalacao_linux_instalador1.png" alt="Download do código fonte do FPC" width="auto" height="auto"></p>
+     <p><img src="assets/instalacao_linux_instalador1.png" alt="Download do código fonte do FPC" width="auto" height="auto"></p>
+     <p>A opção acima quando marcada fará o fpcupdeluge reutilizar o fpc pré-instalado, caso contrário você enfrentará um monte de downloads e compilações do fpc que na minha modesta opinião não vale a pena.</p>
 </body>
 </html>

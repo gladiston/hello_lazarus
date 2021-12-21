@@ -9,32 +9,24 @@
 <body>
     <h1>Instalação no Windows: Usando fpcupdeluge</h1>
     <hr>
-    <p>É mais simples uma instalação manual com o Lazarus+FPC, mas não é a mais rápida, deveras esse método 
-       é o mais lento de todos, mas tem suas vantagens: <strong>instalação homeuser</strong>.
-       <strong>Instalação homeuser</strong> quer dizer que não precisamos de permissão especial 
-       de administrador para instalar instalar, configurar e/ou usar. A instalação ficará numa pasta comum
-       que vocÊ tenha permissão e tudo funcionará a contento. Uma outra característica, o fpcupdeluge
-       baixa e compila tanto o FreePascal(FPC daqui em diante) como também o Lazarus e por essa razão, o
-       o programa será otimizado para o processador que estiver usando</p>
+    <p>É mais simples uma instalação manual com o Lazarus+FPC, mas não é a mais rápida,
+        deveras esse método é o mais lento de todos, mas tem suas vantagens: instalação homeuser. 
+        Instalação homeuser quer dizer que não precisamos de permissão especial de administrador 
+        para instalar instalar, configurar e/ou usar. A instalação ficará numa pasta comum que
+        vocÊ tenha permissão e tudo funcionará a contento. Uma outra característica, o fpcupdeluge 
+        baixa e compila tanto o FreePascal(FPC daqui em diante) como também o Lazarus e por essa razão,
+        o o programa será otimizado para o processador que estiver usando.</p>
        <p>Eu prefiro este método de instalação na maioria das vezes.</p>
     <p>Visite a página:<br>
     <a href="https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases">https://github.com/LongDirtyAnimAlf/fpcupdeluxe/releases</a></p>
     <p><img src="assets/instalacao_windows_fpcupdeluge1.png" alt="Fazendo Download" width="auto" height="auto"></p>       
     <p>Note na imagem acima que sublinhei duas versões:<strong>win32 e win64</strong>, por que?</p>
-    <p>A versão 64bits também compila para 32bits, então porque sugerir a versão 32bits? A resposta reside 
-        que os componentes como o Zeos que fazem acesso a banco de dados usam uma DLL que chamamos de 
-        <strong>cliente de banco de dados</strong> e essa deve ser 32 ou 64bits de acordo com o aplicativo 
-        que irá consumi-la. Resumidamente: <strong>se o Lazarus é 64bits então a DLL cliente também deve ser 64bits</strong>.<br>
-        Outros componentes que também façam uso de DLL em tempo de design tem a mesma regra. 
-        Então acaba sendo mais fácil no ambiente Windows obter e consumir DLLs em 32bits.</p>
-        <p>Você não esta impedindo de usar a versão 64bits da IDE, mas se o fizer lembre-se sempre de que
-        a IDE em tempo de design exigirá que consuma DLLs da mesma plataforma, isto é, 64bits.</p>
-        <p>Na distribuição de nossa aplicação, a nossa IDE ser 64bits ou 32bits não tem importância, o importante é que aplicativo.exe
-        vai consumir DLLs da mesma plataforma seja 32 ou 64bits.</p>
-    <p>Mais tarde, notará que em se tratando de Windows e aplicações comerciais, é melhor trabalhar com
-        32bits porque uma aplicação assim roda em qualquer Windows. Um aplicativo integralmente 64bits exigiria
-        esforço em distribuir duas versões do mesmo programa sem nenhum ganho adicional para quem o recebe
-        ou quem o comercializa, alias este ultimo acarretaria apenas em mais esforço.</p>
+    <p>A versão 64bits também compila para 32bits, então porque sugerir a versão 32bits? A resposta reside que os componentes como o Zeos que fazem acesso a banco de dados usam uma DLL que chamamos de cliente de banco de dados e essa deve ser 32 ou 64bits de acordo com o aplicativo que irá consumi-la. Resumidamente: se o Lazarus é 64bits então a DLL cliente também deve ser 64bits.</p>
+    <p>Outros componentes que também façam uso de DLL em tempo de design tem a mesma regra. Então acaba sendo mais fácil no ambiente Windows obter e consumir DLLs em 32bits.</p>
+    <p>Você não esta impedindo de usar a versão 64bits da IDE, mas se o fizer lembre-se sempre de que a IDE em tempo de design exigirá que consuma DLLs da mesma plataforma, isto é, 64bits.</p>
+    <p>Na distribuição de nossa aplicação, a nossa IDE ser 64bits ou 32bits não tem importância, o importante é que aplicativo.exe vai consumir DLLs da mesma plataforma seja 32 ou 64bits.</p>
+    <p>Mais tarde, notará que em se tratando de Windows e aplicações comerciais, é melhor trabalhar com 32bits porque uma aplicação assim roda em qualquer Windows. Um aplicativo integralmente 64bits exigiria esforço em distribuir duas versões do mesmo programa sem nenhum ganho adicional para quem o recebe ou quem o comercializa, alias este ultimo acarretaria apenas em mais esforço.</p>
+
     <p><strong>Passo #1</strong>: Execute o instalador do fpcupdeluxe.exe, é provavel que lhe apareça esta pergunta:</p>
     <p><img src="assets/instalacao_windows_fpcupdeluge2.png" alt="Fazendo Download" width="auto" height="auto"></p> 
     <p>Responda <strong>"Yes"</strong> se concordar em enviar dados anônimos de sua instalação para o servidor 
@@ -53,10 +45,8 @@
     
     <p>E então prepare-se, a instalação é bastante demorada. Eu costumo instalar o FPC separadamente 
         e personalizar o fpcupdeluge para usar FPC pré-instalado, isso me salva de um tempo ainda maior.</p>
-    <p><strong>IMPORTANTE:</strong> No final da instalação será gerado um atalho intitulado <strong>Lazarus_fpcupdeluxe</strong>.
-    Execute-o sempre por este atalho, evite dar um duplo clique no executável na pasta de instalação, 
-    pois a execução pelo atalho faz uso do parametro <strong>--pcp=C:\pasta\de\instalacao\do\lazarus\configs</strong> que
-    faz a configuração do Lazarus ir para o local indicado. Se executar sem o atalho ou sem o parametro, 
-    o Lazarus funcionará, mas as configurações estarão no default.</p> 
+    <p><strong>IMPORTANTE:</strong>No final da instalação será gerado um atalho intitulado Lazarus_fpcupdeluxe. Execute-o sempre por este atalho, evite dar um duplo clique no executável na pasta de instalação, pois a execução pelo atalho faz uso do parâmetro :</p> 
+    <p><strong>--pcp=C:\pasta\de\instalacao\do\lazarus\configs </strong></p>
+    <p>Que faz a configuração do Lazarus ir para o local indicado. Se executar sem o atalho ou sem o parâmetro, o Lazarus funcionará, mas as configurações estarão no default.</p>
 </body>
 </html>

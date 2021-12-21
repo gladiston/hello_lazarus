@@ -9,28 +9,22 @@
 <body>
     <h1>Lazarus IDE - Guia de sobrevivência</h1>
     <hr>
-    <p>Este guia foi pensando em orientar os primeiros passos daquele programador que já tem experiência 
-    com outras linguagens de programação, em especial, programadores em Delphi.</p>
-    <p>Neste guia intenciono mostrar como instalar, configurar e usar a IDE de programação <b>Lazarus</b>.</p>
-    <p>Quem vem de outras linguagens encontrará como usufruir do FreePascal com a IDE Lazarus, isto é certo. 
-        Mas se não souber usar a IDE adequadamente, sua produtividade será penalizada. Por não entender 
-        direito possiveis problemas será tentado a reinstalar a IDE para resolvê-los, e isso além 
-        de anti-produtivo também dará subsidios a ideia de que a IDE é falha ou insegura.</p>
-    <p>Eu já pensei assim, e tive que ir a fundo em estudar como resolver algumas questões rotineiras que
-        acontecem com a IDE para que eu pudesse então me concentrar apenas em programar. Atesto que a 
-        cheguei ao meu objetivo e posso passar minha experiencia a você que chegou até essa página. </p>  
-<h3>Instalação no Windows e Linux</h3>  
+    <p>Se é coisas sobre a IDE Lazarus para programar com FreePascal que você procura, então fique a vontade com os artigos desta seção. Trata-se de um guia de sobrevivência, os artigos estão na ordem que devem ser lidos e terminando com a seção Produtividade, e nesta seção, os artigos podem ser lidos na ordem que preferir.</p>
+<h3>Instalação no Windows</h3>  
 <ol>
-    <li><a href="instalacao_windows_instalador.html">Instalação no Windows: Usando Instalador</a> (nível fácil)</li>
-    <li><a href="instalacao_windows_fpcupdeluge.html">Instalação no Windows: Usando fpcupdeluge</a> (nível médio)</li>
-    <li><a href="instalacao_windows_git.html">Instalação no Windows: Usando GIT</a> (nível médio+1)</li>
-    <li><a href="instalacao_linux_instalador.html">Instalação no Linux: Instalação a partir dos repositórios (nível fácil)</li>
-    <li><a href="instalacao_linux_fpcupdeluge.html">Instalação no Linux: Usando fpcupdeluge</a> (nível médio)</li>
-    <li><a href="instalacao_linux_git.html">Instalação no Linux: Usando GIT</a> (nível médio+1)</li>    
-    <li><a href="instalacao_posinstall_error1.html">Primeira execução: Lidando com o erro "Error: there is a problem with the Fppkg configuration"</a></li>
-    <li><a href="instalacao_posinstall_error2.html">Primeira execução: Warning: "crtbeginS.o" not found, this will probably cause a linking failure</a></li>
+    <li><a href="instalacao_windows_instalador.html">Instalação do Lazarus no Windows: Usando Instalador padrão (nível fácil)</a></li>
+    <li><a href="instalacao_windows_fpcupdeluge.html">Instalação no Windows: Usando fpcupdeluge (nível médio)</a></li>
+    <li><a href="instalacao_windows_git.html">Instalação no Windows: Usando GIT (nível médio+1)</a></li>
+</ol>        
+<h3>Instalação no Linux</h3>  
+<ol>
+    <li><a href="instalacao_linux_instalador.html">Instalação no Linux: Instalação do FPC a partir dos repositórios</a></li>  
+    <li><a href="instalacao_linux_fpcupdeluge.html">Instalação no Linux: Usando fpcupdeluge (nível médio)</a></li>
+    <li><a href="instalacao_linux_git.html">Instalação no Linux: Usando GIT (nível médio+1)</a></li>    
+    <li><a href="instalacao_posinstall_error1.html">Lidando com a mensagem: "Error: there is a problem with the Fppkg configuration"</a></li>
+    <li><a href="instalacao_posinstall_error2.html">Lidando com a mensagem: Warning: "crtbeginS.o" not found, this will probably cause a linking failure</a></li>
 </ol>
-<h3>Essencial, mas não básico</h3>  
+<h3>Essencial, mas não o básico</h3>  
 <ol>
     <li><a href="lazarus_intro.html">Introdução a IDE Lazarus</a></li>
     <li><a href="lazarus_prova_de_balas.html">Lazarus: A prova de balas</a></li>
@@ -65,11 +59,11 @@
     <li><a href="ide_opm_powerpdf.html">Instalação de Pacotes via OPM: PowerPDF</a></li>
     <li><a href="ide_opm_tdinotebook.html">Instalação de Pacotes via OPM: TDINotebook</a></li>
     <li><a href="ide_opm_usercontrol.html">Instalação de Pacotes via OPM: UserControl</a></li>
-    <li><a href="ide_reports.html">Gerador de relatórios</a></li>
+    <li><a href="ide_reports.html">Gerador de relatórios usando o Lazarus</a></li>
     <li><a href="ide_opm_fortesreport.html">Instalação de Gerador de relatórios: Fortes Report</a></li>
-    <li><a href="ide_addon_lazreport.html">Instalação de Gerador de relatórios: Laz Report</li>
+    <li><a href="ide_addon_lazreport.html">Instalação de Gerador de relatórios: LazReport</li>
     <li><a href="ide_opm_acs.html">Instalação de Pacotes opcional via OPM: ACS - Audio Components</a></li>
-    <li><a href="ide_opm_rx.html">Instalação de Pacotes opcional via OPM: Rx Tools</a></li>
+    <li><a href="ide_opm_rx.html">Instalação de Pacotes opcional via OPM: RxTools</a></li>
     <li><a href="ide_opm_cef4.html">Instalação de Pacotes opcional via OPM: CEF4Delphi</a></li>
     <li><a href="ide_opm_rds.html">Instalação de Pacotes opcional via OPM: Rest Dataware</a></li>
 </ol>
@@ -83,6 +77,7 @@
     <li><a href="productivity_multi_paste.html">Produtividade: Multi Paste, como usar</a></li>
     <li><a href="productivity_project_group.html">Produtividade: Usando grupo de projetos</a></li>    
     <li><a href="productivity_syncedit.html">Produtividade: Refatorando nomes numa seleção de linhas</a></li>        
+    <li><a href="productivity_tools_examples.html">Produtividade: Aprendendo por exemplos</a></li>
 </ol>
 <h3>Considerações especiais com Linux</h3>  
 <ol>
