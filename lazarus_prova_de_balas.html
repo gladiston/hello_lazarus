@@ -9,12 +9,18 @@
 <body>
     <h1>Lazarus: A prova de balas</h1>
     <hr>
-    <p>Antes de prosseguirmos saiba que iremos instalar vários pacotes, eles são os “addons” que acompanham o código do Lazarus, 
-        mas não são instalados por padrão. Alguns deles quando instalados podem “quebrar” a IDE se houver alguma incompatibilidade 
-        com o compilador ou dependências de outros pacotes. Se isso acontecer, saiba que há no diretório de instalação do seu
-        Lazarus um arquivo “lazarus.exe” que corresponde ao que está em uso e um outro - backup - chamado “lazarus.exe.old”:</p>
+    <p>A instalação de pacotes ou "addons" estendem as funcionalidades tanto da programação como também
+        da IDE e isso é muito bom, contudo podem existir problemas pelo caminho. Como a IDE Lazarus foi
+        compilada com o FreePascal, incluir novos pacotes requeirerá que nossa IDE seja recompilada. 
+        Mas e se a recompilação falhar, será que perderemos nossa IDE?</p>
+    <p>O time do Lazarus pensou nisso também e orgulhosamente eles podem responder "não" a essa pergunta. 
+        Mas precisamos estar preparados para recuperar-se dessa situação, como?</p>
+    <p>Se ao instalar um pacote ou por qualquer outro motivo nossa IDE parar de funcionar, 
+        saiba que há no diretório de instalação do Lazarus um arquivo “lazarus.exe” que corresponde
+        ao que está em uso e um outro - backup - chamado “lazarus.exe.old”, não acredita? 
+        Então observe:</p>
     <p><img src="assets/lazarus_prova_de_balas1.png" alt="Pasta de instalação" width="auto" height="auto"></p>        
-    <p>Numa hipótese de instalar um pacote novo e a IDE deixar de funcionar, simplesmente execute o programa “lazarus.old.exe” e aparecerá esta mensagem:</p>
+    <p>Na hipótese da IDE deixar de funcionar, simplesmente execute o programa “lazarus.old.exe” e aparecerá esta mensagem:</p>
     <p><img src="assets/lazarus_prova_de_balas2.png" alt="Pasta de instalação" width="auto" height="auto"></p>        
     <p>Então clique em Update Info(Atualizar informações) e o sistema irá retornar ao estágio anterior quando as coisas funcionavam. </p>
     <p>Se a IDE quebrou por causa de pacotes que tentou instalar, aproveite para ir em <strong>Packages|Install and uninstall packages</strong>
