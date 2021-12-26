@@ -22,6 +22,23 @@ sudo dnf install pango pango-devel pangomm pangomm-devel
      <pre>
      sudo dnf install fpc fpc-src qt5pas-devel
      </pre>
+     <p>Tanto no Windows como também no Linux é essencial saber onde os arquivos de código fonte do freepascal se encontram, então execute:</p>
+    <ul>
+        <li>rpm -ql fpc-src<br>
+            <pre>
+(...)
+<strong>/usr/share/fpcsrc</strong>/rtl/x86_64/set.inc
+<strong>/usr/share/fpcsrc</strong>/rtl/x86_64/setjump.inc
+<strong>/usr/share/fpcsrc</strong>/rtl/x86_64/setjumph.inc
+<strong>/usr/share/fpcsrc</strong>/rtl/x86_64/strings.inc
+<strong>/usr/share/fpcsrc</strong>/rtl/x86_64/stringss.inc
+<strong>/usr/share/fpcsrc</strong>/rtl/x86_64/x86_64.inc
+            </pre>            
+        </li>
+    </ul>
+    <p>Se você observou bem a saída do comando, todos eles se encontram na raiz da pasta:</p>    
+    <p><strong>/usr/share/fpcsrc</strong></p>
+    <p>Anote esse caminho porque ele será importante para configurar a IDE do Lazarus ou o vscode.</p>
      <p>Com o FPC instalado no seu sistema você está apto a instalar o Lazarus via GIT ou fpcupdeluge. 
          Para não ser muito repetitivo, escolha como desejará fazer a instalação do Lazarus:</p>
      <ol>
