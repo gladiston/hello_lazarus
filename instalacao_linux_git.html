@@ -9,25 +9,46 @@
 <body>
     <h1>Instalação no Linux: Usando GIT</h1>
     <hr>
+    <p>Depois de instalar o FPC dos repositórios, você pode seguir as instruções nesta página para 
+        prosseguir com a instalação do Lazarus-IDE.</p>
+        <p>Caso ainda não tenha instalado o FreePascal Compiler(FPC, daqui em diante), então siga este link:</p>
+        <p><a href="instalacao_linux_instalador.html">Instalação no Linux: Instalação do FPC a partir dos repositórios</a></p>
+        <p>Depois de instalar o FPC dos repositórios, usaremos o git para instalar Lazarus-IDE no HOME do usuário. 
+        Instalar o Lazarus-IDE em nossa $HOME é muito bom porque não necessitaremos de permissões especiais
+        para aplicar patches ou correções em pacotes instalados ou que instalaremos.</p>
+        <p>Antes de prosseguir precisamos fazer um ajuste importante em nosso ambiente Linux, 
+        ao executar programas construídos no Lazarus no ambiente Linux pode surgir a seguinte
+        mensagem de dependência no terminal:</p>
+        <pre>
+    Gtk-Message: 00:00:00.000: Failed to load module "pk-gtk-module"
+        </pre>    
+        <p>O programa executa normalmente, mas essa mensagem ou a falta dessa dependência pode indicar que algum
+        aspecto visual não está como deveria ser, para corrigir o problema, execute:</p>
+        <p>O programa executa normalmente, mas a falta dessa dependência pode indicar que algum aspecto 
+            visual não está como deveria ser, para corrigir o problema, execute:</p>
+        <pre>
+sudo -i
+echo "/usr/lib64/gtk-3.0/modules" > /etc/ld.so.conf.d/pk-gtk.conf
+echo "/usr/lib64/gtk-2.0/modules" > /etc/ld.so.conf.d/gtk2.conf
+ldconfig
+        </pre>
+    <p>E a mensagem de dependência no terminal sumirá.</p>
     <p>A maioria dos que estiverem lendo essas instruções irão preferir usar o <strong>Instalador 
     do Lazarus</strong> ou o <strong>fpcupdeluge</strong>. Porém há uma terceira via que funciona 
     para Windows e Linux,a instalação diretamente do código fonte do Lazarus, parece complicado, 
-    mas não é se você já compilou programas via GIT antes. Há algumas vantagens nisso,
+    mas não é se você já baixou ou compilou programas via GIT antes. Há algumas vantagens nisso,
     a versão binária compilada por você mesmo será específica para o seu hardware e portanto 
     mais veloz que a versão do instalador. Será similar ao fpcupdeluge, porém mais econômica
     e rápida porque usaremos o FreePascal(FPC daqui em diante) pré-instalado.</p>
     <p>Como o Lazarus está num repositório GIT, temos outra vantagem>: atualização de versão.</p>
     <p>Siga as instruções abaixo, embora sejam para o Linux, os princípios são os mesmos para Windows.</p>
     <ol>
-        <li>Instale o FPC a partir do repositório oficial, se estiver usando Fedora(Redhat e derivados) o comando será:
-            <pre>sudo dnf install fpc.x86_64 fpc-src.noarch </pre>
+        <li>Se você instalou o FPC (incluindo os fontes) a partir do repositório oficial, então
+        precisamos anotar onde estão os fontes do FPC, execute o comando:<br>
+        <pre>rpm -ql fpc-src.noarch</pre>
+        Descobrirá e notará que foram instalados em <strong>/usr/share/fpcsrc</strong>, anote este caminho porque precisaremos dele mais tarde.
         </li>
-        <li>O comando anterior instalou tanto os binários quanto o código fonte, mas se precisar 
-            saber onde os fontes estão instalados, execute o comando:
-            <pre>rpm -ql fpc-src.noarch</pre>
-            E notará que foram instalados em <strong>/usr/share/fpcsrc</strong>, anote este caminho porque precisaremos dele mais tarde.
-        </li>
-        <li>Apague a pasta <strong>~/.lazarus</strong> se existir:<br>
+        <li>Apague a pasta <strong>~/.lazarus</strong> se a mesma existir:<br>
         <pre>rm -fR ~/.lazarus</pre></li>
         <li>Ainda no terminal, indique onde deseja que o lazarus seja baixado, por exemplo, 
             se desejar diretamente na raiz de sua $HOME então:
@@ -36,12 +57,6 @@ mkdir lazarus
 cd lazarus
 git clone https://gitlab.com/freepascal.org/lazarus/lazarus.git</pre>
         </li>
-        <li>Foi criada uma pasta ‘lazarus’ ficando assim ~/lazarus/lazarus, então vamos renomear esta última
-            para representar a versão que desejamos, por exemplo, a 2.2.
-<pre>
-mv lazarus lazarus22
-cd lazarus22/</pre>
-        </li> 
         <li>Vamos criar uma pasta ‘configs’ que servirá para armazenar a configuração do Lazarus:
             <pre>mkdir configs</pre>            
         </li>       
@@ -49,16 +64,13 @@ cd lazarus22/</pre>
             <pre>git branch --all</pre>
             <p>Então será listado todos os branchs existentes no repositório oficial:</p>
     <textarea rows=5 cols=80 disabled>
-    (...)
-    remotes/origin/fixes_2_0
-    remotes/origin/fixes_2_2
-    (...)    
+(...)
+remotes/origin/fixes_2_0
+remotes/origin/fixes_2_2
+(...)    
     </textarea>
-    <p>E então escolha um branch das que foram listadas, escolha a <strong>fixes_2_2</strong> que
-        incluirá a 2.2.x mais os fixes, isto é, as correções  da série 2.2. Mas se desejar 
-        uma versão que já está saindo do forno, volte ao passo anterior  e renomeie o diretório
-        de <strong>~/lazarus/lazarus22</strong> para outro nome  mais conveniente com a versão escolhida
-        e repita os passos anteriores novamente. 
+    <p>E então escolha um branch das que foram listadas, como exemplo escolharemos a <strong>fixes_2_2</strong> que
+        incluirá a 2.2.x mais os fixes, isto é, as correções da série 2.2. Mas se desejar outra, fique a vontade.         
         Para prosseguir com o nosso exemplo usando o <strong>fixes_2_2</strong>:</p>
         <pre>git switch fixes_2_2</pre>
     </li> 
@@ -67,48 +79,66 @@ cd lazarus22/</pre>
 make bigide</pre> 
         (demora um pouco, mas vai compilar tudo)     
        </li> 
-       <li>Anote onde o Lazarus foi instalado, a saber, <strong>~/lazarus/lazarus22</strong> e depois 
-        crie um link simbolico para ele:
-        <pre>sudo ln -s ~/lazarus/lazarus22/lazarus /usr/bin/lazarus22</pre>
-        Usamos o nome <strong>lazarus22</strong> apenas para indicar que se trata do Lazarus 2.2. Use 
-        este nome para executar o <strong>lazarus</strong> pelo terminal.
+       <li>Estamos usando uma pasta com nome de ‘lazarus’ ficando assim ~/lazarus/lazarus, então vamos renomear esta última
+        para representar melhor a versão que escolhemos, por exemplo, a 2.2.
+<pre>
+cd ..
+mv lazarus lazarus-2.2
+cd lazarus-2.2/</pre>
+    </li> 
+
+
+       <li>Anote onde o Lazarus foi instalado, a saber, <strong>~/lazarus/lazarus-2.2</strong> e depois 
+        crie um script bash para ele:
+        <pre>gedit ~/.local/bin/lazarus-2.2.sh</pre>
+        <p>Cole este conteúdo:</p>
+<textarea rows=5 cols=80 disabled>
+#!/bin/sh
+# lazarus 2.2
+cd ~/lazarus/lazarus-2.2
+./lazarus --pcp=~/lazarus/lazarus-2.2/configs "$@"
+</textarea>
+<p>Salve o script acima e depois execute no terminal:</p>
+<pre>
+    chmod a+x ~/.local/bin/lazarus-2.2.sh
+</pre>
+        Usamos o nome <strong>lazarus-2.2.sh</strong> quando precisar executar o <strong>lazarus</strong> pelo terminal.
        </li>
-       <li>Copie o icone do Lazarus que esta em <strong>~/lazarus/lazarus22/images/icons/lazarus.ico</strong> para:<br> 
-        /usr/share/icons<br>
-        <pre>sudo cp ~/lazarus/lazarus22/images/icons/lazarus.ico /usr/share/icons/</pre>
-        Usaremos este ícone na fase seguinte, a criação do atalho.
+       <li>Copie o icone do Lazarus que esta em <strong>~/lazarus/lazarus-2.2/images/icons/lazarus.ico</strong> para:<br> 
+        ~/.local/share/icons<br>
+        <pre>
+cp ~/lazarus/lazarus-2.2/images/icons/lazarus.ico ~/.local/share/icons
+        </pre>
        </li>       
        <li>Crie um atalho para ele em sua área de trabalho:
-        <pre>gedit ~/.local/share/applications/lazarus22.desktop</pre>
+        <pre>gedit ~/.local/share/applications/lazarus-2.2.desktop</pre>
         <p>e então cole as instruções abaixo:</p>
-<textarea disabled rows=12 cols=80>
+<textarea disabled rows=14 cols=80>
 [Desktop Entry]
+
 Version=1.0
+Encoding=UTF-8
 Type=Application
-Terminal=false
+Icon=lazarus.ico
+Path=~/lazarus/lazarus-2.2
+Exec=~/lazarus/lazarus-2.2/lazarus --pcp=~/lazarus/lazarus-2.2/configs %f
 Name=Lazarus 2.2
-Exec=/usr/bin/lazarus22 –pcp=~/lazarus/lazarus22/configs %f
-Comment=Lazarus 2.2
-Icon=/usr/share/icons/lazarus.ico
+GenericName=Lazarus IDE with Free Pascal Compiler
 Category=Application;IDE;Development;GUIDesigner;Programming;
 Categories=Application;IDE;Development;GUIDesigner;Programming;
-Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;          
+Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;         
 </textarea>
         <p>Salve o arquivo, a partir de agora, o Lazarus 2.2 aparecerá no menu de seu sistema
             se procurar pelo nome:</p>
         <p>
             <img src="assets/lazarus_icone_gnome1.png" alt="Icone do Lazarus no ambiente GNOME" width="auto" height="auto"><br>
             A imagem acima é possivel notar que temos nosso Lazarus 2.2, ao lado de uma instalação do fpcupdeluge.            
-        </p></li>
-        <p> Recomendo que use o menu do seu sistema para executar esta instalação do Lazarus, mas caso queira fazê-lo pela linha de comando faça-o dessa forma:</p>
-        <pre>lazarus22 --pcp=~/lazarus/lazarus22/configs</pre>
-        <p>Pois é, nada prático executá-lo dessa forma via terminal, mas caso seja comum chamar o 
-            Lazarus dessa forma - e pelo terminal - então recomendo que crie um script bash:</p>
-            <pre>sudo gedit /usr/bin/lazarus22.sh</pre>
-            <p>e cole o seguinte conteúdo</p>
-            <pre>"/home/seulogin/lazarus/lazarus22/lazarus" --pcp="/home/lazarus/lazarus22/configs" "$@"</pre>
-            <p>Isso garantirá que as configurações que fizer dentro da IDE serão gravadas neste local
-                indicado e poderão mais tarde serem salvas noutro local para a posteridade.</p>
+        </p>
+    </li>
+        <p> Recomendo que use o menu do seu sistema para executar o Lazarus, mas caso queira fazê-lo pela linha de comando use o script criado:</p>
+        <pre>lazarus-2.2.sh</pre>
+        <p>Isso garantirá a execução com a opção <strong>--pcp=~/lazarus/lazarus-2.2/configs</strong> e
+         evitará lazarus diferenes contaminem configurações diferenes.</p>
     </ol>
     <p>Eventualmente você poderá querer baixar novas versões ou atualizações,
         trata-se dum repositório git então não haverá problemas, sempre que precisar recorra aos comandos:</p>
@@ -116,8 +146,8 @@ Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;
 git pull  </pre>
     <p>Onde <strong>main</strong> é o branch atual, mas você pode trocá-lo se preferir e então repita 
      os procedimentos anteriores que culminarão no ‘make bigide' mencionado nos passos anteriores.</p>
-    <p>Geralmente, as correções do Lazarus estarão listadas com o nome de branchs como prefixo‘fixes’,
-        então será fácil identificar atualizações.</p>
+    <p>Geralmente, as correções do Lazarus estarão listadas com o nome de branchs com o prefixo‘fixes’,
+        então será fácil identificar as atualizações.</p>
     <p><strong>TODO</strong>: Adicionar opções para crosscompiling, da forma como esta acima, os projetos serão 
      compilados apenas para o ambiente do host, isto é, se estiver num amd64 apenas compilará para 64bits.</p>        
 </body>
